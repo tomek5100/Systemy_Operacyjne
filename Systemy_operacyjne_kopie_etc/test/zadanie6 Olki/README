@@ -1,0 +1,30 @@
+Aleksandra Jaroszek
+=======================================================================
+
+*Zawartosc: 
+============
+
+Katalog zawiera programy z ćwiczenia szóstego w języku C:
+
+1. Program implementuje problem wzjamenego wykluczania dla procesów. Czas reakcji na wspólnym zasobie jest
+symulowany przy pomocy funkcji sleep. Aby zademnstrowac poprawnosc dzialania programu wypisuje on odpowiednie 
+komunikaty przez poszczegolne procesy przed, w takcie i po sekcji krytycznej. Dodatkowo posiada wlasna biblioteke 
+funkcji. Za powielanie procesow realizujacych wzajemne wykluczanie odpowiedzialna jest funkcja fork i execl.
+Na samym poczatku "powielacz" tworzy plik tekstowy "numer.txt" i wpisuje do niego numer 0,  natomiast program implementujacy
+w swojej sekcji krytycznej odczytuje wartosc zapisanego w tym pliku numeru, a nastepnie powieksza go o 1
+i po wylosowanej przez funkcje "rand" chwili zapisuje z powrotem do pliku. Po zakonczeniu dzialania wszytskich procesow 
+realizujacych wzajemne wykluczanie proces "powielacz" sprawdza poprawnosc koncowego numeru zapisanego w pliku i wypisuje 
+odpowiedni komunikat o poprawnosci lub bledzie.
+
+Program sklada sie z 4 modulow:
+1) main.c - program glowny,"powielacz", znajduje sie tam funcja fork i execl;
+2) program.c - program zawierajcy wzajemne wykluczanie, jest argumentem funckcji execl w programie main.c;
+3) funkcje.c - program implementujacy wlasna biblioteke funkcji;
+4) funkcje.h - plik naglowkowy biblioteki;
+
+-> aby go uruchomić program, należy wykonać komende:
+	make run
+->aby wyczyścić zbędne pliki w katalogu:
+	make clean
+->aby zarchiwizować oraz skompresować katalog, należy wykonać komendę:
+ 	make tar

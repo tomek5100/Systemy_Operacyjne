@@ -1,0 +1,3 @@
+Ile procesow powstanie przyn-krotnym wywolaniu funkcji fork i dlaczego?
+
+Powstanie 2^n procesów ponieważ po każdym forku potomek stanie się jednocześnie rodzicem dla następnych potomków.

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Andrzej Görlich" />
+  <title>Wstęp do programu Make</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cs.if.uj.edu.pl/css/modern/manual.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Wstęp do programu <em>Make</em></h1>
+<p class="author">Andrzej Görlich</p>
+<p class="date">03.2021</p>
+</header>
+<p>Program <code>make</code> automatyzuje proces kompilacji projektu na podstawie reguł zawartych w pliku <code>Makefile</code>. Rozpoznaje, które pliki uległy zmianie (plik źródłowy jest nowszy od docelowego) i kompiluje tylko te części, które są wymagane. Znacząco przyspiesza i upraszcza ponowną kompilację projektu. Nie jest powiązany z żadnym konkretnym językiem programowania i może być dostosowany do wielu sytuacji.</p>
+<p>Tutaj można znaleźć <a href="https://www.gnu.org/software/make/manual/make.html">dokumentację programu <code>make</code></a>.</p>
+<h2 id="plik-makefile">Plik Makefile</h2>
+<p>Program <code>make</code> czyta reguły zapisane przez użytkownika w pliku z bieżącego katalogu o nazwie <code>Makefile</code> (sugerowana), <code>makefile</code> lub <code>MAKEFILE</code>. Zaawansowany przykład pliku Makefile można znaleźć w pakiecie <a href="StartSO.tar.gz">StartSO.tar.gz</a>. Sugeruję zacząć od najprostszej wersji (obsługującego jedynie kompilację <code>make</code> i czyszczenie <code>make clean</code>) i rozbudowywać na potrzeby kolejnych zestawów.</p>
+<p><code>Makefile</code> składa się z <strong>pięciu elementów</strong>: <em>reguł jawnych</em>, <em>reguł wzorcowych</em>, <em>definicji zmiennych</em>, <em>dyrektyw</em> i <em>komentarzy</em>.</p>
+<h2 id="makefile-krok-po-kroku">Makefile krok po kroku</h2>
+<p>Rozważmy najprostszy przypadek, w którym plik źródłowy <code>hello.c</code> kompilujemy do tymczasowego pliku obiektowego <code>hello.o</code>, a ten do pliku wykonywalnego <span class="tooltip"><code>hello.x</code><span class="tooltiptext">Rozszerzenie <code>.x</code> jest konwencją używaną na zajęciach</span></span>.</p>
+<h3 id="reguły-jawne">Reguły jawne</h3>
+<p>Najprostszym typem reguł są <em>reguły jawne</em>. Reguła jawna określa kiedy i w jaki sposób należy zbudować konkretny <em>plik docelowy</em> (lub pliki) na podstawie pliku lub plików źródłowych (<em>zależności</em> lub <em>prerekwizyty</em>). Plik docelowy jest wynikiem działania reguły.</p>
+<p>Przykład reguły jawnej:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.x:</span><span class="dt"> hello.o</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>&lt;TAB&gt;gcc -s -lm -o hello.x hello.o</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.o:</span><span class="dt"> hello.c</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>&lt;TAB&gt;gcc -O3 -Wall -c -o hello.o hello.c</span></code></pre></div>
+<p>Pierwsza linia reguły określa plik docelowy (<code>hello.x</code>), którego nazwa znajduje się przed dwukropkiem, oraz zależności (<code>hello.o</code>), czyli listy plików od których zależy cel. Zmiana któregokolwiek z nich oznacza, że cel również zostanie uaktualniony. Kolejne linie określają komendy, które należy wykonać, aby zbudować plik docelowy z plików źródłowych. Reguła jawna posiada następującą składnię:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">cel:</span><span class="dt"> prerekwizyt ...</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>&lt;TAB&gt;komenda</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>&lt;TAB&gt;komenda</span></code></pre></div>
+<p><strong>UWAGA!</strong> Symbol <code>&lt;TAB&gt;</code> oznacza znak tabulacji. Komendy <strong>muszą</strong> być wcięte za pomocą jednego <strong>znaku tabulacji</strong>, a <strong>nie spacji</strong>!!<br />
+Proszę sprawdzić ustawienia używanego edytora tekstu.</p>
+<p><strong>UWAGA!</strong> Kolejność reguł w powyższym przykładzie nie jest przypadkowa. Domyślną regułą jest pierwsza reguła, która znajduje się w pliku <code>Makefile</code>. Zostaje ona wykonana gdy wywołamy program <code>make</code> bez żadnych argumentów. W tym przypadku będzie to stworzenie pliku wykonywalnego <code>hello.x</code>. W przeciwnym wypadku plik, który chcemy utworzyć podajemy jako argument programu make:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> make hello.x</span></code></pre></div>
+<h4 id="reguły-niejawne">Reguły niejawne</h4>
+<p><em>Reguła niejawna</em> określa kiedy i w jaki sposób otrzymać brakujący plik w oparciu o jego typ. Program <em>make</em> posiada bogaty zbiór wbudowanych reguł niejawnych. Można zdefiniować własne reguły niejawne przy użyciu <em>reguł wzorcowych</em>, które omówiono poniżej.</p>
+<h3 id="zmienne">Zmienne</h3>
+<p>Niektóre wyrażenia, jak na przykład opcje kompilatora, mogą się wielokrotnie powtarzać. Aby uniknąć konieczności ich modyfikacji w każdym wystąpieniu, warto użyć zmiennych. W poniższym przykładzie definiujemy zmienną z opcjami kompilatora (<code>CFLAGS</code>) i linkera (<code>LDFLAGS</code>):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS  </span><span class="ch">:=</span><span class="st"> -O3 -Wall</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">LDFLAGS </span><span class="ch">:=</span><span class="st"> -s -lm </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.x:</span><span class="dt"> hello.o</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span> -o hello.x hello.o</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.o:</span><span class="dt"> hello.c</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span> -c -o hello.o hello.c</span></code></pre></div>
+<p>Niektóre zmienne mają ustalone znaczenie i są predefiniowane domyślnymi wartościami (np. <code>CC := cc</code>), które można zmienić.<br />
+Lista wybranych zmiennych:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Zmienna</th>
+<th>Wartość domyślna</th>
+<th>Znaczenie</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CC</strong></td>
+<td><code>cc</code></td>
+<td>Kompilator <em>C</em></td>
+</tr>
+<tr class="even">
+<td><strong>CXX</strong></td>
+<td><code>g++</code></td>
+<td>Kompilator <em>C++</em></td>
+</tr>
+<tr class="odd">
+<td><strong>CPP</strong></td>
+<td><code>$(CC) -E</code></td>
+<td>Preprocesor <em>C</em></td>
+</tr>
+<tr class="even">
+<td><strong>RM</strong></td>
+<td><code>rm -f</code></td>
+<td>Komenda usunięcia pliku</td>
+</tr>
+<tr class="odd">
+<td><strong>CFLAGS</strong></td>
+<td></td>
+<td>Flagi etapu kompilacji <em>C</em></td>
+</tr>
+<tr class="even">
+<td><strong>CXXFLAGS</strong></td>
+<td></td>
+<td>Flagi etapu kompilacji <em>C++</em></td>
+</tr>
+<tr class="odd">
+<td><strong>LDFLAGS</strong></td>
+<td></td>
+<td>Flagi etapu linkowania</td>
+</tr>
+<tr class="even">
+<td><strong>CURDIR</strong></td>
+<td></td>
+<td>Absolutna ścieżka do katalogu roboczego</td>
+</tr>
+</tbody>
+</table>
+<p>Ponadto importowane są także zmienne środowiskowe. Aby podstawić wartość zmiennej obejmujemy je nawiasem okrągłym (a nie klamrowym jak w <em>shell</em>u) i poprzedzamy symbolem dolara.</p>
+<h3 id="zmienne-automatyczne">Zmienne automatyczne</h3>
+<p>W poprzednim przykładzie, <strong>cel</strong> i <strong>zależności</strong> pojawiają się w pierwszej linii reguły (zawierającej dwukropek), a następnie powtarzają się w komendzie jako argumenty kompilatora. Aby uniknąć powtarzania konkretnych nazw plików docelowych i źródłowych, możemy je zastąpić zmiennymi automatycznymi, odpowiednio <code>$@</code> i <code>$^</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS  </span><span class="ch">:=</span><span class="st"> -O3 -Wall</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">LDFLAGS </span><span class="ch">:=</span><span class="st"> -s -lm </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.x:</span><span class="dt"> hello.o</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span> -o <span class="ch">$@</span> <span class="ch">$^</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.o:</span><span class="dt"> hello.c</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span> -c -o <span class="ch">$@</span> <span class="ch">$^</span></span></code></pre></div>
+<p>W ramach reguł możemy stosować między innymi następujące <em>zmienne automatyczne</em>:</p>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 33%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Nazwa</th>
+<th>Opis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>$@</code></td>
+<td>Cel</td>
+<td>Obiekt, który znajduje się po lewej stronie dwukropka w regule.</td>
+</tr>
+<tr class="even">
+<td><code>$^</code></td>
+<td>Wszystkie prerekwizyty</td>
+<td>Obiekty, które znajdują się po prawej stronie dwukropka.</td>
+</tr>
+<tr class="odd">
+<td><code>$&lt;</code></td>
+<td>Pierwszy prerekwizyt</td>
+<td>Obiekt, który znajduje się bezpośrednio po prawej stronie dwukropka.</td>
+</tr>
+<tr class="even">
+<td><code>$?</code></td>
+<td>Wszystkie prerekwizyty nowsze niż cel</td>
+<td>(oddzielone spacjami)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reguły-wzorcowe">Reguły wzorcowe</h3>
+<p>Szybko przekonamy się, że tak zapisane reguły kompilacji (z użyciem zmiennych automatycznych), wyglądają identycznie dla wielu plików. W takim przypadku, można utworzyć regułę wzorcową:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS  </span><span class="ch">:=</span><span class="st"> -O3 -Wall -c</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">LDFLAGS </span><span class="ch">:=</span><span class="st"> -s -lm </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="dv">%.x:</span><span class="dt"> %.o</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span> -o <span class="ch">$@</span> <span class="ch">$^</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="dv">%.o:</span><span class="dt"> %.c</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span> -c -o <span class="ch">$@</span> <span class="ch">$&lt;</span></span></code></pre></div>
+<p>Nazwy plików (z wyłączeniem rozszerzenia) możemy zastąpić symbolem procent (<code>%</code>) i połączyć wiele reguł jawnych w jedną. W powyższym przykładzie mamy dwie reguły wzorcowe. Pierwsza mówi w jaki sposób <em>skompilować</em> plik źródłowy z rozszerzeniem <code>.c</code> do pliku obiektowego o tej samej nazwie bazowej ale z rozszerzeniem <code>.o</code>. Analogicznie, druga reguła określa w jaki sposób <em>zlinkować</em> plik obiektowy z rozszerzeniem <code>.o</code> do pliku wykonywalnego z rozszerzeniem <code>.x</code>.</p>
+<p>Jeżeli chcemy wskazać, że plik docelowy zależy od niestandardowych plików źródłowych możemy utworzyć regułę bez podawania komend. Wówczas zostaną użyte komendy z odpowiedniej reguły wzorcowej:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.o:</span><span class="dt"> hello.c hello.h</span></span></code></pre></div>
+<p>W tym przypadku zmiana pliku <code>hello.h</code> wymusi rekompilację pliku <code>hello.o</code>. Ponieważ w regule wzorcowej użyto zmiennej automatycznej <code>$&lt;</code> określającej pierwszy prerekwizyt, plik <code>hello.h</code> nie będzie argumentem kompilatora. Odwołanie do pliku nagłówkowego znajduje się w pliku źródłowym <code>hello.c</code>.</p>
+<h3 id="akcje">Akcje</h3>
+<p>Akcje to reguły, których <em>celem</em> nie jest plik. Na przykład, stwórzmy akcję <code>clean</code> czyszczącą niepotrzebne pliki tymczasowe i wynikowe (<code>*.o</code> i <code>*.x</code>). Sprawdź w sekcji <em>zmienne</em> co oznacza <code>$(RM)</code>. Może okazać się, że nazwa akcji jest jednocześnie nazwą pliku w projekcie. Aby uniknąć nieporozumień należy użyć dyrektywy <code>.PHONY</code>, która mówi, że dana reguła nie jest nazwą pliku.</p>
+<p>Program <code>make</code> wywołany bez argumentów wczytuje plik <code>Makefile</code> i wykonuje pierwszą regułę zawartą w tym pliku. Dlatego często jako pierwszy definiuje się cel <code>all</code>, który zależy od wszystkich plików wynikowych jakie chcemy stworzyć w danym projekcie. Spowoduje to ich kompilacje w razie potrzeby. Na ogół reguła dla <code>all</code> nie zawiera komend.</p>
+<p>Przykład zawierający akcje <code>all</code> i <code>clean</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS  </span><span class="ch">:=</span><span class="st"> -O3 -Wall -c</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="dt">LDFLAGS </span><span class="ch">:=</span><span class="st"> -s -lm </span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ot">.PHONY:</span><span class="dt"> all clean</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> hello.x</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="dv">hello.o:</span><span class="dt"> hello.c hello.h</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="dv">%.o:</span><span class="dt"> %.c</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span> -c -o <span class="ch">$@</span> <span class="ch">$^</span> </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="dv">%.x:</span><span class="dt"> %.o</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span> -o <span class="ch">$@</span> <span class="ch">$^</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="dv">clean:</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">RM</span><span class="ch">)</span> *.o *.x</span></code></pre></div>
+<h3 id="komentarze">Komentarze</h3>
+<p>Symbol <code>#</code> rozpoczyna komentarz. Komentarz może rozpoczynać się od początku linii lub w jej środku. Znak <code>#</code> wraz z resztą linii są ignorowane. Aby użyć symbolu <code>#</code> należy poprzedzić go znakiem modyfikacji backslash, czyli <code>\#</code>.</p>
+<h3 id="funkcje">Funkcje</h3>
+<p>Program <code>make</code> posiada bogaty zbiór wbudowanych funkcji, które wykonują rozmaite operacje na argumentach. Zdefiniujmy zmienną <code>sources</code>, która przechowuje nazwy plików źródłowych:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">sources </span><span class="ch">=</span><span class="st"> hello.c test.c main.c</span></span></code></pre></div>
+<p>Do zmiennej można się odwołać poprzez <code>$(sources)</code>. Na podstawie tej zmiennej możemy utworzyć zbiór plików obiektowych zamieniając rozszerzenie <code>.c</code> na <code>.o</code>. Użyjemy do tego funkcji <code>patsubst</code>, a wynik zapiszemy pod zmienną <code>objects</code>:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">objects </span><span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">patsubst</span><span class="st"> %.c</span><span class="kw">,</span><span class="st">%.o</span><span class="kw">,</span><span class="ch">$(</span><span class="dt">sources</span><span class="ch">))</span></span></code></pre></div>
+<p>Składnia funkcji <code>patsubst</code> (<em>pattern substitution</em>) wygląda następująco: <code>$(patsubst wzor_wejsciowy, wzor_wynikowy, lista_wyrazow)</code>. Funkcja ta każdy wyraz z listy wyrazów kojarzy ze wzorem wejściowym i zamienia go tak, by pasował do wzorca wyjściowego, pozostawiając niezmienione części, które zostały schowane za znakiem %. Podobnie funkcja <code>addsuffix</code> dodaje rozszerzenie do nazw plików według następującej składni: <code>$(addsuffix suffix,names...)</code>.<br />
+Szczegółową listę funkcji wbudowanych znajdziemy <a href="https://www.gnu.org/software/make/manual/html_node/Functions.html">tutaj</a>.</p>
+<blockquote>
+<p>Zamiast wieloznaczników powłoki (<code>*.o *.x</code>) w regule <code>clean</code>, lepiej użyć funkcji <code>wildcard</code>, <code>$(RM) $(wildcard *.[ox])</code>. Różnica stanie się widoczna w przypadku, gdy nie istnieje żaden plik o rozszerzeniu <code>.o</code> lub <code>.x</code>.</p>
+</blockquote>
+<h3 id="opcje-programu-make">Opcje programu <code>make</code></h3>
+<p>Przydatne opcje programu <code>make</code>: <code>-B</code>, <code>-n</code>, <code>-p</code> (więcej informacji <code>make man</code>).<br />
+Program <code>make</code> automatycznie usuwa pliki pośrednie (np. <code>*.o</code>).</p>
+<p>Opcja <code>-MM</code> kompilatora <code>gcc</code> pozwala uzyskać informację o zależnościach, za pomocą których można stworzyć prosty <code>Makefile</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-MM</span> module.c</span></code></pre></div>
+<h2 id="przykład-podstawowego-pliku-makefile">Przykład podstawowego pliku <code>Makefile</code></h2>
+<p>Rozważmy projekt w <em>C</em>, który składa się z pięciu plików źródłowych,</p>
+<pre><code>main.c, test.c, test.h,  module.c, module.h</code></pre>
+<p>Służą one do stworzenia docelowego pliku wykonywalnego <code>program.x</code> na podstawie reguł zawartych w poniższym przykładowym pliku <code>Makefile</code>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CC      </span><span class="ch">:=</span><span class="st"> gcc</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS  </span><span class="ch">:=</span><span class="st"> -Wall </span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dt">LDFLAGS </span><span class="ch">:=</span><span class="st"> -s -lm</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="dt">sources </span><span class="ch">=</span><span class="st"> module test main</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="dt">objects </span><span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">addsuffix</span><span class="st"> .o</span><span class="kw">,</span><span class="ch">$(</span><span class="dt">objects</span><span class="ch">))</span><span class="st">    # Przykład użycia funkcji addsuffix</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ot">.PHONY:</span><span class="dt"> clean</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="dv">module.o:</span><span class="dt"> module.c module.h             </span><span class="co"># Definicja zależności</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="dv">test.o:</span><span class="dt"> test.c test.h                   </span><span class="co"># Plik .c można pominąć,</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="dv">main.o:</span><span class="dt"> main.c test.h                   </span><span class="co"># zostanie dodany przez regułę wzorcową</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="dv">program.x:</span><span class="dt"> </span><span class="ch">$(</span><span class="kw">addsuffix</span><span class="st"> .o</span><span class="kw">,</span><span class="ch">$(</span><span class="dt">sources</span><span class="ch">))</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="dv">%.o:</span><span class="dt"> %.c                                </span><span class="co"># Reguła wzorcowa .c [+ .h] -&gt; .o</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">CFLAGS</span><span class="ch">)</span> -c -o <span class="ch">$@</span> <span class="ch">$&lt;</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="dv">%.x:</span><span class="dt"> %.o                                </span><span class="co"># Reguła wzorcowa .o + ... -&gt; .x</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span> -o <span class="ch">$@</span> <span class="ch">$^</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="dv">clean:</span><span class="dt">                                  </span><span class="co"># Akcja</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">RM</span><span class="ch">)</span> program.x <span class="ch">$(</span><span class="dt">objects</span><span class="ch">)</span>          <span class="co"># Lub $(wildcard *.[ox])</span></span></code></pre></div>
+<h2 id="zadanie">Zadanie</h2>
+<p>Dopisać do <code>Makefile</code> akcje: <code>tar</code> (archiwizacja bieżącego katalogu do <code>.tar.gz</code>), <code>all</code> (domyślna - powinna zostać umieszczona jako pierwsza - reguła, która kompiluje wszystkie programy w zestawie).</p>
+</body>
+</html>

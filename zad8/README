@@ -1,0 +1,44 @@
+Autor: Tomasz Różycki, 		26.05.2021
+
+
+******
+Zawartość:
+
+Katalog zawiera rozwiązane zadanie z cwiczenia 8:
+
+Program 'serwer' najpierw tworzy kolejke do ktorej beda trafiac komunikaty od klientow,
+nastepnie wypisuje jej atrybuty oraz ja zamyka. W nieskonczonej petli najpierw otwiera
+owczesnie otworzona kolejke, nastepnie odczytuje wiadomosc od klienta, rozdziela ja na
+nazwe oraz dzialanie, otwiera kolejke komunikatow klienta do ktorej wysyla wykonane dzialanie.
+Aby opuscic petle nalezy wykonac komende CTRL C.
+Ostatnim krokiem jest zamkniecie oraz usuniecie uzywanych kolejek.
+
+Program 'klient' najpierw tworzy nazwe swojej kolejki komunikatow w postaci /PID, nastepnie
+tworzy kolejke o danej nazwie oraz wypisuje jej atrybuty. W petli otwiera owczesnie utworzona
+kolejke oraz kolejke serwera. Z klawiatury pobiera zadanie do wykonania, postaci 2+1, nastepnie
+scala dane potrzebne serwerowi do wykonania dzialania oraz odeslania informacji o wyniku. Aby 
+opuscic petle nalezy wykonac polecenie CTRL D.
+Ostatnim krokiem jest odebranie oraz wypisanie otrzymanego wyniku oraz zamkniecie oraz usuniecie
+uzywanych kolejek.
+
+
+******
+  Jak uruchomić programy:
+  
+ W katalogu znajduje się program Makefile do kompilacji, linkowania i uruchamiania powyższych programów, a także do czyszczenia i archiwizacji katalogu.
+ 
+
+ ->Uruchomienie programu, należy wykonać komendę:
+	make run
+Kompiluje ona program oraz uruchamia trzy okna konsoli XTERM.
+
+>W przypadku nieoczekiwanego problemu z utworzeniem kolejek komunikatu z powodu istnienia juz
+	takiej kolejki mozna ja usunac wpisujac w terminalu cd /dev/mqueue nastepnie ls -l 
+	nastepnie rm (nazwa kolejki)
+
+ ->Aby wyczyścić zbędne pliki w katalogu, należy wykonać komendę:
+ 	make clean	
+ 
+ ->Aby zarchiwizować oraz skompresować katalog, należy wykonać komendę:
+ 	make tar
+

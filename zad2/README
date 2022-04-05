@@ -1,0 +1,30 @@
+Autor: Tomasz Różycki, 		Kraków,24.03.2021
+
+
+******
+Zawartość:
+
+Katalog zawiera rozwiązane zadania z ćwiczenia 2:
+
+I. Program zawiera zmodyfikowane ćwiczenie 1b oraz program wypisujący identyfiaktory procesów potomnych,
+	który zostaje wywołany poprzez funkcję exec.	
+
+-> W pliku odpowiedz.txt zawarłem odpowiedź z uzasadnieniem na pytanie o ilość procesów, które powstają przy
+   n-krotnym wywołaniu funkcji fork-exec. 
+   
+******
+  Jak uruchomić program:
+  
+ W katalogu znajduje się program Makefile do kompilacji, linkowania i uruchamiania powyższych programów, a także
+ do czyszczenia i archiwizacji katalogu.
+ 
+ ->Uruchomienie programu, należy wykonać komendę:
+ 	make run
+ 	
+ ->Aby wyczyścić zbędne pliki w katalogu, należy wykonać komendę:
+ 	make clean	
+ 
+ ->Aby zarchiwizować oraz skompresować katalog, należy wykonać komendę:
+ 	make tar
+ 
+ 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Procesy" />
+  <title>Zestaw 1</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cs.if.uj.edu.pl/css/modern/manual.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Zestaw 1</h1>
+<p class="author">Procesy</p>
+<p class="date">Termin 23.03.2021 - 20.04.2021</p>
+</header>
+<!-- **Termin oddania: 17.03.2020**   -->
+<!-- **Termin ostateczny: 07.04.2020**   -->
+<!-- **Waga: 1.0** -->
+<p>Proszę zapoznać się ze <a href="https://ujchmura.sharepoint.com/:u:/r/teams/Systemyoperacyjnewiczenia/Materiay/IntroMake.html?web=1"><strong>wstępem do programu <em>make</em></strong></a> oraz <a href="Procesy.pdf"><strong>skryptem</strong></a>, który zawiera wszystkie informacje potrzebne do rozwiązania tego zestawu. Napisać odpowiedni plik <code>Makefile</code> oraz <code>README</code> dotyczący wszystkich programów w tym zestawie. Zadania należy umieścić w katalogu <code>Zestaw01</code>, a programy powinny mieć <em>sensowne</em> nazwy. <strong>Nie</strong> tworzyć osobnych katalogów dla każdego zadania. Nazwy plików wykonywalnych powinny posiadać rozszerzenie <code>.x</code>.</p>
+<!-- Rozwiązania należy wysłać na platformę [Antyplagiatową](http://antyplagiat.czn.uj.edu.pl) w terminie oddania, każdy tydzień zwłoki powoduje obniżenie oceny o pół stopnia.
+Proszę wysyłać pliki źródłowe (`*.c, *.h`), nie zamieszczać plików binarnych, w szczególności `*.o, *.x`.  
+ -->
+<!-- Następnie, na najbliższych zajęciach, należy zaliczyć zadania jednak nie najpóźniej niż w terminie ostatecznym, wówczas trzeba rozwiązać także ćwiczenia dodatkowe. -->
+<p>Zadania należy oddać w trakcie ćwiczeń w terminie oddania, każdy tydzień zwłoki powoduje obniżenie oceny o pół stopnia. Zadanie można oddawać nie najpóźniej niż w terminie ostatecznym, wówczas trzeba rozwiązać także ćwiczenia dodatkowe. Brak zaliczenia zestawu w terminie ostatecznym oznacza <strong>brak zaliczenia</strong> całych <strong>ćwiczeń</strong>.</p>
+<h3 id="zadanie-0.-start">Zadanie 0. Start</h3>
+<p>Proszę zapoznać się ze wzorcowym katalogiem z programami w języku C:</p>
+<ol type="1">
+<li>Pobrać i zapisać w swoim katalogu ćwiczeniowym plik <a href="StartSO.tar.gz">StartSO.tar.gz</a></li>
+<li>Rozpakować: <code>tar xvzf StartSO.tar.gz</code></li>
+<li>Przejść do katalogu <code>StartSO</code>, przeczytać plik <code>README</code> i wykonać zawarte tam polecenia.</li>
+<li>Przyjrzeć się programom, głównie plikowi <code>hello.c</code>.</li>
+<li>Przeanalizować plik <code>Makefile</code>, głównie odnośnie programu pierwszego, czyli <code>hello</code>.</li>
+</ol>
+<h3 id="zadanie-1.-procinfo">Zadanie 1. Procinfo</h3>
+<p>Na rozwiązanie zadania składają się następujące pliki: <code>Makefile</code>, <code>main.c</code>, <code>procinfo.c</code> i <code>procinfo.h</code>.</p>
+<p>Plik <code>Makefile</code>:</p>
+<ul>
+<li>Proszę zapoznać się ze <a href="IntroMake.html">Wstępem do make</a>.</li>
+<li>Bazując na wstępie (nie przerabiać pliku <code>Makefile</code> z pakietu <code>StarSO</code>) napisać od zera minimalny plik <code>Makefile</code> zawierający zależności dla <em>celów</em> <code>main.o</code>, <code>procinfo.o</code> i <code>main.x</code> oraz regułę wzorcową <code>%.o</code> <span class="math inline">→</span> <code>%.x</code>.</li>
+<li>Utworzyć regułę domyślną (pierwszą) <strong>all</strong>, która zależy tylko od <code>main.x</code> i regułę <strong>clean</strong>, która usuwa pliki tymczasowe i wykonywalne, użyć dyrektywy <strong>.PHONY</strong>.</li>
+</ul>
+<p>Plik <code>procinfo.c</code>:</p>
+<ul>
+<li>Zawiera <strong>definicję</strong> (implementację) funkcji <code>int procinfo(const char* name)</code>, która wypisuje identyfikatory <code>UID, GID, PID, PPID</code> i <code>PGID</code> dla aktualnego procesu oraz nazwę programu przekazaną jako argument.</li>
+<li>Plik źródłowy ma zawierać tylko tę funkcję, nie ma zawierać funkcji <code>main</code>.</li>
+</ul>
+<blockquote>
+<p><strong>Uwaga:</strong> Funkcja <code>procinfo</code> powinna wypisywać wszystkie informacje w jednej linii.<br />
+Zapobiegnie to <em>przeplataniu</em> wiadomości pochodzących od kilku procesów działających jednocześnie.<br />
+Należy wyświetlać także nazwy identyfikatorów, a nie same liczby, np.<br />
+<code>Name = ./procesy.x, UID = 1000, GID = 1000, PID = 112, PPID = 111, PGID = 110</code></p>
+</blockquote>
+<p>Plik nagłówkowy <code>procinfo.h</code>:</p>
+<ul>
+<li>Zawiera deklarację funkcji <code>procinfo</code>.</li>
+<li>Należy zastosować dyrektywy preprocesora, które zapobiegną wielokrotnemu dołączaniu tego samego pliku nagłówkowego. Patrz plik <code>funkcja.h</code> w pakiecie <code>StartSO</code>.</li>
+</ul>
+<p>Plik <code>main.c</code>:</p>
+<ul>
+<li>Zawiera implementację funkcji <code>int main(int argc, char* argv[])</code>, która jedynie wywołuje funkcję <code>procinfo</code> z argumentem będącym nazwą programu (<code>argv[0]</code>).</li>
+</ul>
+<h3 id="zadanie-2.-kopiowanie">Zadanie 2. Kopiowanie</h3>
+<p>Napisać program <code>kopiuj.c</code>, który kopiuje zawartość jednego pliku do drugiego. Nazwy plików są podane w linii komend, nazwa pliku źródłowego znajduje się w <code>argv[1]</code>, a docelowego w <code>argv[2]</code>. W przypadku złej liczby argumentów (<code>argc</code>) wypisać komunikat o prawidłowym użyciu programu (użyć aktualnej nazwy programu, <code>argv[0]</code>).</p>
+<ul>
+<li>Użyć funkcje systemowe <code>open</code>, <code>read</code>, <code>write</code>.</li>
+<li>Obsłużyć wszystkie możliwe błędy wywołań funkcji systemowych i bibliotecznych, użyć funkcji <code>perror</code>.</li>
+</ul>
+<blockquote>
+<p><strong>Wskazówka:</strong> Należy stworzyć bufor (tablica typu <code>char</code>) o zadanym rozmiarze (np. 1024 bajtów) i w pętli wczytać zawartość pliku do bufor (nie przepełniając go) i zapisywać do pliku docelowego <strong>odczytaną</strong> liczbę bajtów. Pamięć pod bufor można zaalokować statycznie bądź dynamicznie używając <code>malloc()</code>, wówczas należy pamiętać aby ją zwolnić wywołując <code>free()</code>.</p>
+</blockquote>
+<h3 id="zadanie-3.-procesy">Zadanie 3. Procesy</h3>
+<p>Napisać program <code>procesy.c</code>, który wykonuje następujące zadania:</p>
+<ul>
+<li>Przy użyciu funkcji <code>procinfo()</code> z poprzedniego zadania,wypisać identyfikatory <code>UID</code>, <code>GID</code>, <code>PID</code>, <code>PPID</code> i <code>PGID</code> dla danego procesu</li>
+<li>Wywołać funkcję <code>fork()</code> 3 razy w pętli <code>for</code> lub <code>do {...} while()</code> i wypisać powyższe identyfikatory dla wszystkich procesów potomnych. Sposób użycia funkcji <code>fork</code> jest opisany w <strong>skrypcie</strong>.</li>
+<li>Wstawić funkcję <code>sleep()</code> w takich miejscach programu, aby procesy pojawiały się na ekranie grupowane pokoleniami od najstarszego do najmłodszego.</li>
+<li>Procesy powinny czekać na wszystkie swoje procesy potomne używając funkcji <code>wait()</code>.<br />
+</li>
+<li>Na podstawie wyników programu sporządzić <em>drzewo genealogiczne</em> tworzonych procesów (z zaznaczonymi identyfikatorami <code>PID</code>, <code>PPID</code> i <code>PGID</code>).</li>
+</ul>
+<blockquote>
+<p><strong>Uwaga:</strong> Różne procesy mają różną liczbę dzieci.</p>
+</blockquote>
+<h4 id="dla-zainteresowanych">Dla zainteresowanych:</h4>
+<ul>
+<li>Zmienić nazwę programu <code>argv[0]</code> na <code>"parent"</code> dla procesu macierzystego oraz <code>"child"</code> dla procesu potomnego. Należy przekopiować napisy np. używając funkcji <code>strncpy()</code>. Proszę pamiętać aby nie przekroczyć oryginalnej długości argumentu <code>argv[0]</code>.</li>
+<li>Wynik sprawdzić używając komend <code>ps u</code> <strong>oraz</strong> <code>ps -a</code>. Drzewko wszystkich procesów można zobaczyć komendą <code>ps -AHF</code>.</li>
+</ul>
+<h3 id="zadanie-4.-lider.c">Zadanie 4. <code>lider.c</code></h3>
+<p>Zmodyfikować program <code>procesy.c</code> tak, aby każdy proces potomny stawał się <em>liderem</em> swojej własnej grupy. Należy użyć <code>setpgid()</code>.</p>
+<h2 id="pytania-do-zestawu">Pytania do zestawu</h2>
+<ul>
+<li>Opisać dokładnie jak działa funkcja <code>fork()</code>?</li>
+<li>Ile powstaje procesów w zadaniu <strong>procesy</strong> i dlaczego?</li>
+<li>Ile procesów powstanie przy <span class="math inline"><em>n</em></span>-krotnym wywołaniu funkcji <code>fork</code> i dlaczego?</li>
+<li>Jak używając funkcji <code>sleep</code> i bez odwoływania się do funkcji <code>wait()</code> zapewnić aby procesy macierzyste kończyły się dopiero po procesach potomnych.</li>
+<li>Jaką wartość zwraca <code>open()</code>?</li>
+<li>Jaką wartość zwraca <code>read()</code> i <code>write()</code>?</li>
+</ul>
+<h2 id="ćwiczenia-dodatkowe">Ćwiczenia dodatkowe</h2>
+<h3 id="zadanie-a1.">Zadanie A1.</h3>
+<p>Napisać własną funkcję do diagnostyki błędów działającą podobnie do funkcji <code>perror</code>, ale dodatkowo wypisującą kod błędu (wartość zmiennej <code>errno</code>). Skorzystać z tablicy komunikatów błędów <code>sys_errlist[]</code> i sprawdzać czy wartość zmiennej <code>errno</code> mieści się w zakresie jej indeksu (użyć zmiennej <code>sys_nerr</code>) - patrz <code>man perror</code> i <code>man errno</code>. Niech ta funkcja umożliwia również wypisywanie diagnostyki błędów do pliku oraz podejmowanie decyzji czy kontynuować proces, czy też go zakończyć. Napisać wersje, tej funkcji, która zamiast bezpośrednio odwoływać się do tablicy <code>sys errlist[]</code>, korzysta z funkcji <code>strerror</code> (patrz <code>man strerror</code>).</p>
+<h2 id="zasady">Zasady</h2>
+<p>Rozwiązanie zestawu składa się z:</p>
+<ul>
+<li>Pliku <code>Makefile</code> do kompilacji wszystkich programów w zestawie (nie używać celu <code>run</code>).</li>
+<li>Pliku <code>README</code> z opisem działania programów i z odpowiedziami na pytania (sugestia: <a href="https://pl.wikipedia.org/wiki/Markdown">markdown</a>).</li>
+<li>Plików z kodem źródłowym programów w języku <em>C</em> (standard <em>C99</em>, opcja <code>-std=c99</code> kompilatora <code>gcc</code>).</li>
+<li>Pliki źródłowe należy spakować do archiwum <code>.tar.gz</code> i nazwać swoim nazwiskiem i numerem zestawu, a następnie umieścić na platformie <a href="http://pegaz.uj.edu.pl">Pegaz</a> (<a href="http://th.if.uj.edu.pl/~atg/SO/wprowadzenie.html#jak-wysyłać-programy-na-platformę-pegaz">więcej informacji jak to zrobić</a>).</li>
+<li>Rozwiązania testu na platformie Pegaz.</li>
+<li>Ustnej <strong>prezentacji</strong> kodu i wyników</li>
+</ul>
+<hr />
+<p>Andrzej Görlich<br />
+<code>a.goerlich@outlook.com</code></p>
+</body>
+</html>

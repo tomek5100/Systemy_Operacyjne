@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Sygnały" />
+  <title>Zestaw 3</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cs.if.uj.edu.pl/css/modern/manual.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Zestaw 3</h1>
+<p class="author">Sygnały</p>
+<p class="date">Termin 13.04.2021 - 11.05.2021</p>
+</header>
+<!-- **Waga: 1.0** -->
+<p>Należy zapoznać się ze <a href="https://ujchmura.sharepoint.com/:b:/r/teams/Systemyoperacyjnewiczenia/Tematy/Sygnaly.pdf?web=1">skryptem</a>, który zawiera wszystkie informacje potrzebne do rozwiązania zestawu.<br />
+Napisać odpowiedni plik <code>Makefile</code> oraz <code>README</code> dotyczący wszystkich programów w tym zestawie.<br />
+Zadania należy umieścić w katalogu <code>Zestaw03</code>, a programy powinny mieć wskazane nazwy, wysłać na platformę Pegaz.</p>
+<p>Numer sygnału oraz opcję obsługi we wszystkich poniższych programach przekazywać za pomocą argumentów wywołania programu. Należy sprawdzać ich liczbę i wypisywać odpowiedni komunikat w przypadku błędnego uruchomienia.</p>
+<h2 id="wprowadzenie">Wprowadzenie</h2>
+<p><em>Sygnały</em> są najprostszą metodą komunikacji międzyprocesowej. Jedynie informują proces o zajściu jakiegoś zdarzenia, same nie przekazują danych (oprócz numeru sygnału). Powodują <em>asynchroniczne</em> przerwanie działania procesu - w dowolnym czasie. Mogą informować np. o dostępności danych (<code>SIGIO (29)</code>).</p>
+<h3 id="zadanie-1.-obsluga.c">Zadanie 1. <code>obsluga.c</code></h3>
+<p>Przeczytać <code>man 2 signal</code> i napisać program do obsługi sygnałów z możliwościami:</p>
+<dl>
+<dt>d</dt>
+<dd>wykonania operacji domyślnej dla sygnału
+</dd>
+<dt>i</dt>
+<dd>ignorowania sygnału
+</dd>
+<dt>p</dt>
+<dd>przechwycenia i własnej obsługi sygnału (wypisać numer sygnału)
+</dd>
+</dl>
+<p>Program przyjmuje dwa argumenty z linii komend (<code>argv</code>): rodzaj akcji (<strong>d</strong>, <strong>i</strong> lub <strong>p</strong>, użyć instrukcji <code>switch</code>) i numer sygnału (patrz <code>man atoi</code>). Sprawdzić liczbę argumentów i wypisać odpowiedni komunikat w przypadku błędnego uruchomienia. Na samym początku program ma wypisać informacje o procesie (patrz <code>procinfo.c</code> z Zestawu 1.). Przykład poprawnego wywołania programu:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./obsluga.x</span> p 15</span></code></pre></div>
+<p><strong>Zadanie</strong></p>
+<p>Uruchomić program w terminalu i wysyłać do niego sygnały przy pomocy sekwencji klawiszy (np. <code>SIGINT</code>, <code>SIGQUIT</code>) oraz przy pomocy polecenia kill (np. <code>SIGTERM</code>).</p>
+<blockquote>
+<p><strong>Wskazówka:</strong> Do oczekiwania na sygnał można użyć funkcji <code>pause()</code>.</p>
+</blockquote>
+<h3 id="zadanie-2.-wysylaj.c">Zadanie 2. <code>wysylaj.c</code></h3>
+<p>Uruchomić <strong>raz</strong> program <code>obsluga.x</code> poprzez funkcję <code>execl()</code> w procesie potomnym (<code>switch+fork+execl</code>, patrz Zestaw 2.) i wysyłać do niego sygnały poprzez funkcję systemową <a href="http://www.linux.pl/man/index.php?section=2&amp;command=kill"><code>kill()</code></a> z procesu macierzystego (patrz <code>man 2 kill</code>). Numer sygnału oraz opcję obsługi przekazać jako argumenty programu.</p>
+<p><strong>Uwaga:</strong> Przed wysłaniem sygnału sprawdzić czy proces istnieje (patrz Skrypt, podrozdział 3.2).</p>
+<h3 id="zadanie-3.-grupa.c">Zadanie 3. <code>grupa.c</code></h3>
+<p>W procesie macierzystym utworzyć proces potomny i sprawić, aby stał się liderem nowej grupy procesów (<code>setpgid()</code>), a następnie uruchomić w nim <strong>kilka</strong> procesów potomnych wykonujących program do obsługi sygnałów. Z pierwszego procesu macierzystego wysyłać sygnały do całej grupy procesów potomnych po uprzednim sprawdzeniu jej istnienia (patrz <code>man 2 kill</code>). Identyfikator tej grupy procesów uzyskać przy pomocy <code>getpgid()</code>. Proces będący liderem grupy procesów niech <strong>ignoruje</strong> sygnały, a na końcu czeka na zakończenie wszystkich swoich procesów potomnych i wypisuje ich status zakończenia zwracany przez <code>wait()</code>.</p>
+<p><strong>Uwaga:</strong> Lider grupy również należy do grupy, zatem trzeba go odpowiednio <em>uodpornić</em> na sygnał, np. przez ustawienie jego ignorowania.</p>
+<h3 id="zadanie-4.-readme">Zadanie 4. <code>README</code></h3>
+<ul>
+<li>Opisać użycie i działanie programów z Zestawu.</li>
+<li>Krótko opisać funkcję i znaczenie <strong>czterech</strong> wybranych sygnałów, w tym <strong>dwóch</strong> nieprzechwytywalnych.</li>
+<li>Które sygnały możemy wysłać w terminalu przy użyciu skrótów klawiszowych?</li>
+</ul>
+<h2 id="pytania-do-zestawu">Pytania do zestawu</h2>
+<ul>
+<li>Do czego służą sygnały?</li>
+<li>Co <strong>robi</strong> a czego <strong>nie robi</strong> funkcja <code>signal()</code>?</li>
+<li>Jak działa funkcja <code>kill()</code>? Podaj trzy przykłady uwzględniające rolę pierwszego argumentu?</li>
+<li>Jak sprawdzić czy istnieje proces <code>pid</code> lub grupa <code>pgid</code> i czy możemy do nich wysyłać sygnały?</li>
+<li>Jaki sens ma wywołanie <code>kill(0, 0)</code>?</li>
+<li>Jak i dlaczego należy uodpornić proces macierzysty w programie <code>grupa.c</code> na sygnał?</li>
+<li>Jak wznowić proces zatrzymany sygnałem <code>SIGSTOP</code>?</li>
+<li>Opisać sygnał <code>SIGCHLD</code>.</li>
+<li>Które sygnały możemy wysłać w terminalu przy użyciu skrótów klawiszowych?</li>
+<li>Jak działa funkcja <code>pause()</code>?</li>
+</ul>
+<h2 id="ćwiczenia-dodatkowe">Ćwiczenia dodatkowe</h2>
+<h3 id="zadanie-a1.">Zadanie A1.</h3>
+<p>Napisać program, który czeka na naciśnięcie klawisza <code>Enter</code> z opcją <em>timeout</em>. Program ma czekać nie dłużej niż <span class="math inline">5</span> sekund. Wykorzystać funkcję <code>alarm()</code>.</p>
+<h3 id="zadanie-a2.">Zadanie A2.</h3>
+<p>Zmodyfikować program <code>obsluga.c</code> tak, aby używać funkcji systemowej <code>sigaction()</code> (patrz <code>man sigaction</code>) zamiast <code>signal()</code>. Zmodyfikować program <code>wysylaj.c</code> tak, aby używać funkcji systemowej <code>sigqueue()</code> (patrz <code>man sigqueue</code>) zamiast <code>kill()</code>.</p>
+<hr />
+<p>Andrzej Görlich<br />
+<code>a.goerlich@outlook.com</code></p>
+</body>
+</html>

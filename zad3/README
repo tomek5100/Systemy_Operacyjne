@@ -1,0 +1,42 @@
+Autor: Tomasz Różycki, 		Kraków,13.04.2021
+
+
+******
+Zawartość:
+
+Katalog zawiera rozwiązane zadania z ćwiczenia 3:
+
+******
+  Jak uruchomić programy:
+  
+ W katalogu znajduje się program Makefile do kompilacji, linkowania i uruchamiania
+  powyższych programów, a także do czyszczenia i archiwizacji katalogu.
+ 
+ 
+	Wybor obslugi sygnalu:
+		1 :wykonanie operacji domyslnej
+		2 :ignorowanie
+		3 :przechwycenie i wlasna obsluga sygnalu
+	Wybor numeru sygnalu:
+		Lista wszstkich numerow sygnalow znajduje sie w manualu.
+ 
+ ->Uruchomienie 1-szego programu, należy wykonać komendę:
+ 	make run1
+ 	./zadA.x (wybor osblugi sygnalu) (numer sygnalu)
+ 		Program oczekuje na wyslanie sygnalu z drugiego terminala:
+	kill -(numer sygnalu) PID(procesu ktory wyswietla sie w 1 terminalu)
+ 	
+ ->Uruchomienie 2-ego programu, należy wykonać komendę:
+ 	make run2
+ 	./zadB.x (wybor osblugi sygnalu) (numer sygnalu)
+ 	
+ ->Uruchomienie 3-ciego programu, należy wykonać komendę:
+ 	make run3
+ 	./zadC.x (wybor osblugi sygnalu) (numer sygnalu)
+ 	
+ ->Aby wyczyścić zbędne pliki w katalogu, należy wykonać komendę:
+ 	make clean	
+ 
+ ->Aby zarchiwizować oraz skompresować katalog, należy wykonać komendę:
+ 	make tar
+

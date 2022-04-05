@@ -1,0 +1,28 @@
+Autor: Tomasz Różycki, 		11.05.2021
+
+
+******
+Zawartość:
+
+Katalog zawiera rozwiązane zadanie z cwiczenia 6:
+
+******
+  Jak uruchomić programy:
+  
+ W katalogu znajduje się program Makefile do kompilacji, linkowania i uruchamiania powyższych programów, a także do czyszczenia i archiwizacji katalogu.
+ 
+
+ ->Uruchomienie programu, należy wykonać komendę:
+ 	make run
+ 	./powielacz.x zew.x (liczba potomkow) (liczba sekcji krytycznych)
+
+~~~ Aby sprawdzic poprawnosc dzialania programu mozna wykomentowac synchronizacje semaforem,
+	wartosc oczekiwana nie bedzie zgadzala sie z wartoscia zapisana w pliku.
+	Przykladowo mozna wykomentowac opusc(semafor) oraz podnies(semafor) w programie zew.c
+
+ ->Aby wyczyścić zbędne pliki w katalogu, należy wykonać komendę:
+ 	make clean	
+ 
+ ->Aby zarchiwizować oraz skompresować katalog, należy wykonać komendę:
+ 	make tar
+

@@ -1,0 +1,32 @@
+Autor: Tomasz Różycki, 		Kraków,21.04.2021
+
+
+******
+Zawartość:
+
+Katalog zawiera rozwiązane zadanie z cwiczenia 4:
+
+******
+  Jak uruchomić programy:
+  
+ W katalogu znajduje się program Makefile do kompilacji, linkowania i uruchamiania powyższych programów, a także do czyszczenia i archiwizacji katalogu.
+ 
+
+ ->Uruchomienie programu, należy wykonać komendę:
+ 	make run
+ 	./zad4.x (nazwa pliku z danymi) (nazwa pliku do ktorego kopiujemy)
+ 			
+ 		W przypadku przykladowych plikow z katalogu nalezy wykonac:
+ 			./zad4.x in.txt out.txt
+ 	
+  ->Makefile wyswietla informacje, czy pliki sa identyczne poslugujac sie poleceniem:
+	make diff
+		ktory wykonuje polecene:
+			diff -s (plik1) (plik2)
+ 	
+ ->Aby wyczyścić zbędne pliki w katalogu, należy wykonać komendę:
+ 	make clean	
+ 
+ ->Aby zarchiwizować oraz skompresować katalog, należy wykonać komendę:
+ 	make tar
+

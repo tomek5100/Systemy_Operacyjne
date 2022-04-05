@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Semafory" />
+  <title>Zestaw 6</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cs.if.uj.edu.pl/css/modern/manual.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Zestaw 6</h1>
+<p class="author">Semafory</p>
+<p class="date">Termin 27.04.2021 - 18.05.2021</p>
+</header>
+<!-- **Waga: 1.5** -->
+<!-- Należy zapoznać się ze [skryptem](https://ujchmura.sharepoint.com/:b:/r/teams/Systemyoperacyjnewiczenia/Tematy/Semafory.pdf?csf=1&web=1&e=LPQkSS). -->
+<p>Należy zapoznać się ze skryptem <code>Semafory.pdf</code>.</p>
+<h3 id="zadanie-1.-biblioteka-sem-libsem.a">Zadanie 1. Biblioteka <em>sem</em> (<code>libsem.a</code>)</h3>
+<p>Stworzyć własną <em>bibliotekę statyczną</em> <code>sem</code> zawierającą implementacje następujących funkcji do obsługi <em>nazwanego semafora ogólnego</em> standardu POSIX:</p>
+<ul>
+<li><code>semid semCreate(const char *name, int val)</code> - Tworzy semafor z wartością początkową <code>val</code>.</li>
+<li><code>void semRemove(const char *name)</code> - Usuwa semafor.</li>
+<li><code>semid semOpen(const char *name)</code> - Uzyskuje dostęp do istniejącego semafora. <!-- * `void semInit(semid sem, int val)` - Przypisuje semaforowi `sem` wartość `val`. --></li>
+<li><code>void semClose(semid sem)</code> - Zamyka semafor w danym procesie.</li>
+<li><code>void semP(semid sem)</code> - Opuszcza semafor: zmniejsza wartość semafora o 1 lub czeka.</li>
+<li><code>void semV(semid sem)</code> - Podnosi semafor: zwiększa wartość semafora o 1 lub wznawia czekający proces. <!-- * `void semZ(semid sem)` - Funkcja czeka na wyzerowanie semafora. --></li>
+<li><code>void semInfo(semid sem)</code> - Funkcja wypisuje informację o wartości semafora, ewentualnie gdy system dopuszcza taką możliwość także o liczbie czekających procesów.</li>
+</ul>
+<p>Zdefiniować własny typ <code>semid</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> sem_t <span class="op">*</span>semid<span class="op">;</span></span></code></pre></div>
+<p>Powyższe funkcje mają korzystać z odpowiednich funkcji systemowych do obsługi <strong>semaforów nazwanych</strong> standardu POSIX. Należy:</p>
+<ul>
+<li>Informować o wykonywanych operacjach.</li>
+<li>Obsłużyć możliwe błędy.</li>
+<li>Dołączyć odpowiednie pliki nagłówkowe (proszę zapoznać się z <em>manualem</em> wykorzystywanych funkcji).</li>
+<li>Napisać odpowiedni plik nagłówkowy <code>sem.h</code>.</li>
+</ul>
+<p>Aby utworzyć bibliotekę statyczną <code>libsem.a</code>, należy:</p>
+<ol type="1">
+<li>Skompilować plik źródłowy <code>sem.c</code> do pliku obiektowego <code>sem.o</code></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-c</span> sem.c</span></code></pre></div>
+<ol start="2" type="1">
+<li>Dodać plik obiektowy <code>sem.o</code> do biblioteki <code>libsem.a</code></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ar</span> rv libsem.a sem.o</span></code></pre></div>
+<ol start="3" type="1">
+<li>Aby użyć własnej biblioteki <code>libsem.a</code> należy użyć opcji <code>-l</code> oraz wskazać bieżący katalog opcją <code>-L.</code></li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-pthread</span> <span class="at">-L.</span> test.c <span class="at">-lrt</span> <span class="at">-lsem</span></span></code></pre></div>
+<p>Powyższe operacje mają być wykonywane automatycznie w pliku <code>Makefile</code>.</p>
+<blockquote>
+<p><strong>Wskazówki:</strong><br />
+Gdy zainicjalizujemy semafor wartością 1, otrzymamy semafor binarny.<br />
+Gdy zainicjalizujemy semafor wartością większą niż 1, pozwolimy na jednoczesny dostęp do sekcji krytycznej więcej niż jednemu procesowi.</p>
+</blockquote>
+<blockquote>
+<p><strong>Wskazówki:</strong> Semafor tworzyć z flagą O_EXCL.</p>
+</blockquote>
+<h3 id="zadanie-2.-semuse.c">Zadanie 2. <code>semuse.c</code></h3>
+<p>Napisać program, który przyjmuje jeden jednoliterowy argument i przy użyciu powyższej biblioteki wykonuje poniższe operacje na <em>semaforze ogólnym</em>:</p>
+<dl>
+<dt>i</dt>
+<dd>Inicjuje semafor i wypisuje o nim informacje (<strong>i</strong>nitialize).
+</dd>
+<dt>r</dt>
+<dd>Usuwa semafor (<strong>r</strong>emove).
+</dd>
+<dt>p</dt>
+<dd>Opuszcza semafor i wypisuje o nim informacje (<strong>p</strong>assering).
+</dd>
+<dt>v</dt>
+<dd>Podnosi semafor i wypisuje o nim informacje (<strong>v</strong>rijgave).
+</dd>
+<dt>q</dt>
+<dd>Wypisuje informacje o semaforze (<strong>q</strong>uery).
+</dd>
+</dl>
+<!-- z :    Wykonuje operacje Z (czeka na wyzerowanie, opuszczenie semafora)  i wypisuje informacje o semaforze.-->
+<blockquote>
+<p><strong>Uwaga:</strong> Nazwa semafora <strong>musi</strong> się zaczynać od znaku <code>/</code>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Uwaga:</strong> Aby móc korzystać z funkcji systemowych do obsługi semaforów standardu POSIX należy podczas kompilacji i linkowania użyć flagi <code>-pthread</code> oraz dołączyć podczas linkowania bibliotekę <code>librt</code> (opcja <code>-lrt</code> powinna być ostatnim argumentem). Flaga <code>-pthread</code> jest wykorzystywana zarówno przez preprocesor oraz linker i definiuje dodatkowe makra wymagane przez biblioteki POSIXowe.</p>
+</blockquote>
+<blockquote>
+<p><strong>Uwaga:</strong> Podczas konsolidacji dołączane biblioteki (<code>-lrt -lsem</code>) muszą być podane po plikach źródłowych.</p>
+</blockquote>
+<p><strong>Zadanie:</strong><br />
+Zademonstrować działanie programu: utworzyć i zainicjować semafor, pokazać jego obecność w systemie wypisując zawartość katalogu <code>/dev/shm</code>, w dwóch terminalach kilka razy wywołać operacje <strong>P</strong> i <strong>V</strong>, zaobserwować blokowanie.</p>
+<h3 id="zadanie-3.-prog.c-powielacz.c">Zadanie 3. <code>prog.c</code>, <code>powielacz.c</code></h3>
+<p>Używając własnej biblioteki <code>sem</code> wykorzystującej <strong>semafory nazwane</strong> standardu POSIX zaimplementować zadanie <strong>wzajemnego wykluczania</strong> dla <strong>procesów</strong>. Jednocześnie co najwyżej jeden proces programu <code>prog.x</code> może znajdować się w sekcji krytycznej. Czas operacji na <em>wspólnym zasobie</em> symulować używając np. funkcji <code>usleep()</code>.</p>
+<p>Napisać program <code>powielacz.x</code> do <em>powielania procesów</em> realizujących wzajemne wykluczanie w oparciu o funkcje <code>fork()</code> i <code>exec()</code>. Program ten powinien na początku utworzyć i zainicjować semafor, a na końcu go usunąć, kiedy wszystkie jego procesy potomne zakończą swoje działanie (użyć <code>wait()</code>). Wypisać <strong>adres</strong> i <strong>wartość</strong> początkową stworzonego semafora.</p>
+<p><strong>Semafor usuwać</strong> w funkcji rejestrowanej przez funkcję <code>atexit()</code> (zwrócić uwagę, kiedy należy wywołać funkcję <code>exit()</code>, a kiedy <code>_exit()</code>). Dodać również możliwość usuwania semafora w funkcji <strong>obsługi sygnału</strong> <code>SIGINT</code>, na wypadek gdyby program trzeba było zakończyć sekwencją klawiszy <code>Ctrl-C</code>.</p>
+<p><em>Nazwę programu</em> do inicjowania procesów, <em>liczbę procesów</em> oraz <em>liczbę sekcji krytycznych każdego procesu</em> przekazywać jako argumenty linii komend programu <code>powielacz</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./powielacz.x</span> ./prog.x 4 10</span></code></pre></div>
+<p>Program <code>prog.x</code> powinien wielokrotnie w pętli wejść do sekcji krytycznej. Liczbę iteracji przekazać jako argument programu. Dla demonstracji poprawności działania programu użyć odpowiednich komunikatów wypisywanych przez poszczególne procesy <em>przed</em>, <em>w trakcie</em> i <em>po sekcji krytycznej</em> zawierających w szczególności <code>PID</code> procesu, <em>wartość</em> semafora, a także numer wykonywanej sekcji krytycznej.</p>
+<p>W celu weryfikacji poprawności wzajemnego wykluczania procesów niech <em>powielacz</em> na samym początku stworzy plik tekstowy <code>numer.txt</code> i wpisze w nim liczbę o wartości <code>0</code> (zero), a program implementujący <em>wzajemne wykluczanie</em> w swojej sekcji krytycznej odczytuje wartość zapisanego w tym pliku numeru, następnie zwiększa go o <code>1</code> i po pewnej losowej (np. <code>rand()</code>) chwili czasu zapisuje z powrotem do pliku. Po zakończeniu działania wszystkich procesów realizujących wzajemne wykluczanie proces <em>powielacz</em> powinien sprawdzić poprawność końcowego numeru zapisanego w pliku i wypisać odpowiedni komunikat.</p>
+<p>Plik <code>numer.txt</code> najlepiej najpierw otworzyć w trybie <em>tylko do odczytu</em>, przeczytać zapisany w nim numer, zamknąć go, a następnie po odczekaniu i zwiększeniu numeru o 1 otworzyć go ponownie w trybie <em>do zapisu</em>, wpisać do niego nową wartość numeru i zamknąć go - to wszystko powinno odbywać się w sekcji krytycznej programu. Po odczytaniu numeru z pliku wypisać go na ekranie, a po zakończeniu wszystkich procesów realizujących wzajemne wykluczanie wypisać jego końcową wartość i porównać z wartością oczekiwaną w przypadku poprawnej synchronizacji procesów. Wywołanie funkcji <code>usleep()</code> z losowym czasem wstawić w sekcji krytycznej między odczytem a zapisem numeru z/do pliku, a także przed wejściem do sekcji krytycznej. Do odczytu/zapisu numeru można używać niskopoziomowych funkcji wejścia/wyjścia (<code>read()</code> i <code>write()</code>) lub funkcji formatowanego wejścia/wyjścia (<code>fscanf()</code> i <code>fprintf()</code>). Przy wypisywaniu informacji w sekcji krytycznej na ekranie użyć dodatkowego odstępu po lewej stronie, np. tabulatora, by łatwiej było ją odróżnić od sekcji prywatnej procesu.</p>
+<blockquote>
+<p><strong>Uwaga:</strong> Należy ustawić odpowiednią wartość semafora podczas jego utworzenia. Nazwa semafora <strong>musi</strong> się zaczynać od znaku <code>/</code>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Uwaga:</strong> Sprawdzić również jaka będzie końcowa wartość numeru bez użycia sekcji krytycznej. Wyłączyć synchronizację semaforem (np. wykomentować odpowiednie operacje) i sprawdzić końcową wartość numeru (powinna być mniejsza od tej z użyciem semafora).</p>
+</blockquote>
+<p>Kompilować/linkować programy z flagami: <code>-Wall -std=c99 -pedantic</code>.</p>
+<h2 id="pytania-do-zestawu">Pytania do zestawu</h2>
+<ul>
+<li>Do czego służą <em>semafory</em> w systemach <a href="https://pl.wikipedia.org/wiki/System_uniksopodobny">UN*X</a>?</li>
+<li>Opisz operacje, które można wykonać na semaforach.</li>
+<li>W jaki sposób niezależne procesy mogą korzystać ze wspólnych semaforów?</li>
+<li>Napisz na kartce kod, który realizuje zadanie wzajemnego wykluczania (<strong>bez</strong> użycia własnej biblioteki).</li>
+<li>Czym jest biblioteka statyczna? Jakie są jej zalety?</li>
+<li>Jak utworzyć bibliotekę statyczną? Jak jej używać?</li>
+</ul>
+<h2 id="ćwiczenia-dodatkowe">Ćwiczenia dodatkowe</h2>
+<h3 id="zadanie-a5.">Zadanie A5.</h3>
+<p>Zaimplementować problem <strong>,,wzajemnego wykluczania’’</strong> procesów (patrz zadanie 3.). przy użyciu semaforów standardu System V.</p>
+<h3 id="zadanie-a6.">Zadanie A6.</h3>
+<p>Zaimplementować trzy rozwiązania problemu <strong>,,czytelników i pisarzy’’</strong> (patrz wykład [15]) starając się zminimalizować liczbę semaforów.</p>
+<h3 id="zadanie-a7.">Zadanie A7.</h3>
+<p>Zaimplementować powyższy problem przy użyciu semaforów standardu System V.</p>
+<h3 id="zadanie-a8.">Zadanie A8.</h3>
+<p>Zaimplementować trzy rozwiązania problemu <strong>,,pięciu filozofów’’</strong> przy użyciu semaforów starając się zminimalizować ich liczbę</p>
+<h3 id="zadanie-a9.">Zadanie A9.</h3>
+<p>Zaimplementować powyższy problem przy użyciu semaforów standardu System V.</p>
+<hr />
+<p>Andrzej Görlich<br />
+<code>a.goerlich@outlook.com</code></p>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Kolejki komunikatów" />
+  <title>Zestaw 8</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cs.if.uj.edu.pl/css/modern/manual.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Zestaw 8</h1>
+<p class="author">Kolejki komunikatów</p>
+<p class="date">Termin 25.05 - 08.06.2021 (waga 1.5)</p>
+</header>
+<p>Należy zapoznać się ze skryptem <code>KolejkiKomunikatow.pdf</code>, który zawiera wszystkie informacje potrzebne do rozwiązania zestawu. Napisać odpowiedni plik <code>Makefile</code> oraz <code>README</code> dotyczący wszystkich programów w tym zestawie.</p>
+<h3 id="zadanie-1.-biblioteka-statyczna-libmsg.a-i-dynamiczna-libmsg.so-msg.c-msg.h">Zadanie 1. Biblioteka statyczna <code>libmsg.a</code> i dynamiczna <code>libmsg.so</code> (<code>msg.c</code>, <code>msg.h</code>)</h3>
+<p>Podobnie jak dla semaforów i pamięci dzielonej, stworzyć własną bibliotekę (dynamiczną i statyczną) zawierającą funkcje do obsługi <strong>kolejek komunikatów standardu POSIX</strong>.<br />
+Zaimplementować następujące funkcje:</p>
+<ul>
+<li><code>int msgCreate(const char *name)</code> - Tworzy kolejkę komunikatów o nazwie <code>name</code> i zwraca do niej deskryptor.</li>
+<li><code>int msgOpen(const char *name)</code> - Otwiera kolejkę komunikatów o nazwie <code>name</code> i zwraca do niej deskryptor.</li>
+<li><code>void msgClose(int msgid)</code> - Zamyka dostęp do kolejki od deskryptorze <code>msgid</code>.</li>
+<li><code>void msgRm(const char *name)</code> - Usuwa kolejkę komunikatów nazwie <code>name</code>.</li>
+<li><code>void msgSend(int msgid, komunikat *msg)</code> - Wysyła komunikat wskazywany przez <code>msg</code> do kolejki o identyfikatorze <code>msgid</code>.<br />
+Stworzyć własny typ danych <code>komunikat</code>.</li>
+<li><code>void msgRecv(int msgid, komunikat *msg)</code> - Odbiera z kolejki <code>msgid</code> komunikat i zapisuje go do <code>msg</code>.</li>
+<li><code>void msgInfo(int msgid)</code> - Wypisuje wszystkie informacje o kolejce komunikatów uzyskane przy pomocy <code>mq_getattr()</code>.</li>
+</ul>
+<p>Funkcje mają obsługiwać błędy, a w przypadku ich wystąpienia wypisać odpowiedni komunikat i przerwać program.<br />
+Zadeklarować własną strukturę i typ <code>komunikat</code>.</p>
+<p><strong>Uwaga:</strong> Nazwa kolejki komunikatów <strong>musi</strong> zaczynać się od symbolu <code>/</code>.</p>
+<h3 id="zadanie-2.-serwer-i-klient-serwer.c-klient.c">Zadanie 2. Serwer i klient (<code>serwer.c</code>, <code>klient.c</code>)</h3>
+<p>Proces <em>klienta</em> wysyła do procesu <em>serwera</em> żądanie wykonania działania arytmetycznego na dwóch liczbach postaci: <span class="math inline"><em>a</em> ⊙ <em>b</em></span>, gdzie <span class="math inline"><em>a</em></span> i <span class="math inline"><em>b</em></span> to liczby, a operator <span class="math inline"> ⊙  ∈ {+,−,*,/}</span>, np. <code>2 + 3</code>. Serwer wykonuje odpowiednie działanie i odsyła wynik do klienta. Klient odbiera ten wynik i wypisuje go na ekranie. Posługując się mechanizmem <strong>kolejek komunikatów</strong> standardu POSIX zaimplementować powyższe zadanie typu <strong>klient–serwer</strong> z możliwością obsługi przez serwera <em>wielu klientów</em> naraz.</p>
+<h4 id="zadania-serwera">Zadania <em>serwera</em></h4>
+<ul>
+<li>Utworzyć kolejkę komunikatów w trybie do odbierania o nazwie zdefiniowanej we wspólnym pliku nagłówkowym włączanym w plikach źródłowych programów serwera i klienta. Do tej kolejki klient będzie wysyłał swoje komunikaty, a serwer będzie je z niej odbierał.</li>
+<li>Odbierać komunikaty od klientów ze swojej kolejki w pętli nieskończonej (proces <em>demon</em>).</li>
+<li>Odczytać <code>PID</code> klienta z komunikatu.</li>
+<li>Otworzyć kolejkę klienta w trybie do nadawania komunikatów o nazwie postaci <code>/PID</code>.</li>
+<li>Odczytać i wykonać działanie z komunikatu.</li>
+<li>Odesłać wynik w komunikacie do kolejki klienta.</li>
+<li>Zamknąć kolejkę klienta.</li>
+<li>Proces serwera należy zakończyć np. sygnałem <code>SIGINT</code> (z klawiatury sekwencją klawiszy [Ctrl C]).</li>
+<li>Serwer powinien przechwycić ten sygnał i wykonać jego obsługę w postaci zamknięcia i usunięcia własnej kolejki komunikatów. Czynności te umieścić w funkcji rejestrowanej przez <code>atexit()</code>.</li>
+</ul>
+<h4 id="zadania-klienta">Zadania <em>klienta</em></h4>
+<ul>
+<li>Utworzyć kolejkę komunikatów w trybie do odbierania o nazwie <code>/</code><em>PID</em>, gdzie <em>PID</em> jest jego identyfikatorem procesu, np. <code>/17895</code> (do utworzenia tej nazwy można użyć np. funkcji <code>sprintf()</code>).</li>
+<li>Otworzyć kolejkę serwera w trybie do nadawania komunikatów.</li>
+<li>W pętli (do końca pliku <code>EOF</code>, czyli <code>[Ctrl D]</code> z klawiatury) wypisać na ekranie prośbę o wpisanie z klawiatury odpowiedniego działania i <strong>wczytać</strong> z klawiatury żądane działanie (np. używając funkcji <code>fgets()</code>).</li>
+<li>Stworzyć komunikat umieszczając na początku swój <code>PID</code>, a po nim wczytane wyrażenie (np. już rozdzielone na tokeny/liczby).</li>
+<li>Wysłać komunikat do kolejki serwera.</li>
+<li>Pętlę można zakończyć znakiem końca pliku <code>EOF</code> (z klawiatury wysyła się go sekwencją klawiszy <code>[Ctrl D]</code>).</li>
+<li>Zamknąć kolejkę serwera. Zamknąć i usunąć własną kolejkę.</li>
+<li>Powyższe czynności umieścić w funkcji zarejestrowanej przez <code>atexit()</code> oraz w obsłudze sygnału <code>SIGINT</code>.</li>
+</ul>
+<h4 id="uwagi">Uwagi</h4>
+<ul>
+<li>Nazwę kolejki serwera najlepiej zdefiniować w pliku nagłówkowym włączanym w programach serwera i klienta.</li>
+<li>Na początku niech serwer i klient wypisują na ekranie nazwę, deskryptor i atrybuty utworzonej kolejki.</li>
+<li>Serwer niech wypisuje na ekranie otrzymany komunikat oraz wynik wykonanego działania, a klient wynik otrzymany od serwera - sprawdzić, czy oba wyniki się zgadzają!</li>
+<li>W programach serwera oraz klienta wstawić funkcję <code>sleep()</code>, np. z losowym czasem, między odebraniem a wysłaniem komunikatu lub odwrotnie.</li>
+<li>Niech procesy serwera i klienta wypisują na ekranie odpowiednie komunikaty, w szczególności atrybuty kolejek komunikatów zaraz po ich utworzeniu.</li>
+<li>Wykorzystać własną <em>bibliotekę dynamiczną</em> do obsługi kolejek komunikatów.</li>
+<li>Należy zapoznać się z następującymi funkcjami <em>bibliotecznymi</em>: <code>fgets()</code>, <code>sscanf</code>, <code>sprintf()</code>, <code>atoi</code>.</li>
+<li>Klient musi wysłać swój <code>PID</code> w komunikacie, aby serwer wiedział, do której kolejki odesłać wynik.</li>
+<li>Podziału wyrażenia na <em>tokeny</em> może dokonać <em>klient</em> lub <em>serwer</em>.</li>
+<li>Użyć flag kompilatora: <code>-Wall -std=c99 -pedantic</code>.</li>
+</ul>
+<h4 id="zadanie">Zadanie</h4>
+<p>Zademonstrować działanie programów w osobnych terminalach, np.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xterm</span> <span class="at">-hold</span> <span class="at">-title</span> SERWER <span class="at">-bg</span> red <span class="at">-e</span> serwer.x <span class="kw">&amp;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">xterm</span> <span class="at">-hold</span> <span class="at">-title</span> KLIENT1 <span class="at">-bg</span> green <span class="at">-e</span> klient.x <span class="kw">&amp;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">xterm</span> <span class="at">-hold</span> <span class="at">-title</span> KLIENT2 <span class="at">-bg</span> green <span class="at">-e</span> klient.x <span class="kw">&amp;</span></span></code></pre></div>
+<h2 id="pytania">Pytania</h2>
+<ul>
+<li>Opisać działanie, argumenty i wartość zwracaną przez funkcję <code>mq_open</code></li>
+<li>Opisać działanie, argumenty i wartość zwracaną przez funkcję <code>mq_send</code> i <code>mq_receive</code></li>
+<li>Czy kolejki komunikatów standardu POSIX są widoczne w systemie plików, gdzie?</li>
+<li>Jak otrzymać informacje o parametrach kolejki komunikatów?</li>
+</ul>
+<h2 id="ćwiczenia-dodatkowe">Ćwiczenia dodatkowe</h2>
+<h3 id="zadanie-a14.">Zadanie A14.</h3>
+<p>Napisać program <code>msguse.c</code>, który wykonuje operacje na kolejce komunikatów standardu POSIX.<br />
+Program przyjmuje następujące argumenty i wykonuje odpowiednie akcje:</p>
+<ul>
+<li><code>msguse.x c &lt;name&gt;</code> - Tworzy (<strong>c</strong>reate) kolejkę o nazwie <code>/name</code>.<br />
+Wypisuje komunikat o błędzie, gdy taka kolejka już istnieje.</li>
+<li><code>msguse.x d &lt;name&gt;</code> - Usuwa (<strong>d</strong>estroy) kolejkę o nazwie <code>/name</code>.<br />
+</li>
+<li><code>msguse.x i &lt;name&gt;</code> - Wypisuje wszystkie informacje (<strong>i</strong>nfo) o kolejce <code>/name</code> uzyskane przez funkcję <code>mq_getattr</code> wraz z opisem.</li>
+<li><code>msguse.x w &lt;name&gt;</code> - Czyta kolejne linie ze standardowego wejścia i zapisuje (<strong>w</strong>rite) je do kolejki <code>/name</code> w formie komunikatów.<br />
+Kombinacja klawiszy <code>Ctrl-D</code> kończy wejście.</li>
+<li><code>msguse.x r &lt;name&gt;</code> - Czyta (<strong>r</strong>ead) kolejne komunikaty z kolejki <code>/name</code> i wypisuje je na standardowe wyjście.</li>
+</ul>
+<p><strong>Uwaga:</strong> Pod <code>&lt;name&gt;</code> należy podstawić pożądaną nazwę kolejki.</p>
+<h3 id="zadanie-a15.">Zadanie A15.</h3>
+<p>Zaimplementować problem <em>,,klient–serwer’’</em> przy użyciu kolejek komunikatów <em>Systemu V</em>.</p>
+<hr />
+<p>Andrzej Görlich<br />
+<code>a.goerlich@outlook.com</code></p>
+</body>
+</html>

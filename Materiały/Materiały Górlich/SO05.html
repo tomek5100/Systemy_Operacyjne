@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Potoki nazwane" />
+  <title>Zestaw 5</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cs.if.uj.edu.pl/css/modern/manual.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Zestaw 5</h1>
+<p class="author">Potoki nazwane</p>
+<p class="date">Termin 20.04.2021 - 18.05.2021</p>
+</header>
+<p>Ten zestaw należy oddać razem z zestawem 4. Należy zapoznać się ze <code>Potoki.pdf</code>, który zawiera wszystkie informacje potrzebne do rozwiązania zestawu.<br />
+Napisać odpowiedni plik <code>Makefile</code> oraz <code>README</code> dotyczący wszystkich programów w tym zestawie.<br />
+Zadania należy umieścić w katalogu <code>Zestaw05</code> i <a href="wprowadzenie.html#jak-wysyłać-programy-na-platformę-pegaz">wysłać na platformę Pegaz</a>. Programy powinny mieć wskazane nazwy, a pliki wykonywalne rozszerzenie <strong>.x</strong>.</p>
+<h3 id="zadanie-1.-potoki-nazwane-producent.c-konsument.c-i-fifo.c">Zadanie 1. Potoki nazwane (<code>producent.c</code>, <code>konsument.c</code> i <code>fifo.c</code>)</h3>
+<p>Przy pomocy <strong>potoków nazwanych</strong> systemu UNIX zaimplementować problem <em>Producenta i Konsumenta</em> z zestawu 4. Zaimplementować <em>producenta</em> i <em>konsumenta</em> w dwóch oddzielnych programach (funkcjach <code>main()</code>). Każdy z nich niech przez argumenty wywołania pobiera nazwę potoku oraz nazwę odpowiedniego pliku tekstowego. <em>Potok nazwany</em> - tak jak plik - przed użyciem należy otworzyć funkcją <code>open()</code>, a po użyciu zamknąć funkcją <code>close()</code>. Napisać dodatkowy program <code>fifo.c</code>, który utworzy <em>potok nazwany</em>, następnie przy pomocy funkcji <code>fork()</code> utworzy dwa procesy potomne, w których przy użyciu wywołania <code>exec()</code> uruchomi odpowiednio programy <em>producenta</em> i <em>konsumenta</em>, a na końcu poczeka na ich zakończenie i usunie potok (nazwy plików wykonawczych dla <code>exec()</code> przekazywać przez argumenty wywołania programu). Potok usuwać w funkcji zarejestrowanej przez funkcję <code>atexit()</code>. Zwrócić uwagę na to, gdzie należy wywołać funkcję <code>exit()</code>, a gdzie <code>_exit()</code> - by nie usuwać potoku, który nie został jeszcze utworzony lub nie usuwać go więcej niż raz! Dodatkowo, można dodać obsługę sygnału <code>SIGINT</code>, która będzie usuwać potok - na wypadek gdyby program trzeba było zakończyć sekwencją klawiszy <code>Ctrl-C</code>. Nazwy plików danych i wyników oraz nazwę potoku przekazywać przez argumenty wywołania programu.</p>
+<p><strong>Uwagi:</strong></p>
+<ul>
+<li>Potok usuwać w funkcji zarejestrowanej przez funkcję <code>atexit()</code>.</li>
+<li>Zwrócić uwagę na to, gdzie należy wywołać funkcję <code>exit()</code>, a gdzie <code>_exit()</code> - by nie usuwać potoku, który nie został jeszcze utworzony lub nie usuwać go więcej niż raz!</li>
+<li>Funkcja <code>write()</code> powinna wpisywać liczbę faktycznie wczytanych przez <code>read()</code> bajtów (zwracaną przez nią).</li>
+<li>Kompilacja/linkowanie z flagami: <code>-Wall -std=c99 -pedantic</code></li>
+<li>Programy <em>producent</em> i <em>konsument</em> niech wypisują na ekranie komunikaty o przesyłanych danych, jak w ćwiczeniu 4.</li>
+<li>Na końcu sprawdzić poprawność wykonania programów przez porównanie pliku danych <em>producenta</em> z plikiem wyników <em>konsumenta</em></li>
+</ul>
+<p><strong>Zadania:</strong></p>
+<ol type="1">
+<li>Napisać program <code>fifo.c</code>, który tworzy potok FIFO (<code>mkfifo()</code>), a następnie uruchamia programy Producenta i Konsumenta (<code>mkfifo + 2 x (fork + exec) + 2 x wait + unlink</code>).</li>
+<li>Potok usuwać w funkcji zarejestrowanej przez <code>atexit()</code>.</li>
+<li>Sprawdzić, że potoki FIFO działają dla niezależnych procesów przez utworzenie potoku FIFO z linii komend oraz uruchomienie programów <em>producenta</em> i <em>konsumenta</em> niezależnie z poziomu powłoki, np. w różnych terminalach. Na końcu z poziomu powłoki usunąć potok.</li>
+</ol>
+<h2 id="pytania-do-zestawu">Pytania do zestawu</h2>
+<ul>
+<li>Czym się różni funkcja <code>pipe()</code> od <code>mkfifo()</code>? Co robią te funkcje?</li>
+<li>Co oznacza akronim <strong>FIFO</strong>?</li>
+<li>Jak utworzyć i usunąć potok nazwany z linii komend a jak z poziomu programu?</li>
+</ul>
+<hr />
+<p>Andrzej Görlich<br />
+<code>a.goerlich@outlook.com</code></p>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Wątki" />
+  <title>Zestaw 9</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cs.if.uj.edu.pl/css/modern/manual.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:Lp. msdt:dt="string">9.00000000000000</mso:Lp.>
+<mso:Temat msdt:dt="string">9. W&#261;tki (zadania)</mso:Temat>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Zestaw 9</h1>
+<p class="author">Wątki</p>
+<p class="date">Termin 01.06 - 15.06.2021 (waga 1.0)</p>
+</header>
+<p>Proszę zapoznać się ze skryptem <code>Watki.pdf</code>, który zawiera wszystkie informacje potrzebne do rozwiązania zestawu, oraz następującymi funkcjami biblioteki <strong>pthread</strong> (użyć <code>man</code>):</p>
+<blockquote>
+<p><code>pthread_create</code>, <code>pthread_attr_init</code>, <code>pthread_exit</code>, <code>pthread_cancel</code>, <code>pthread_join</code>, <code>pthread_detach</code>, <code>pthread_mutex_init</code>, <code>pthread_mutex_lock</code>, <code>pthread_mutex_unlock</code>, <code>pthread_mutex_trylock</code>, <code>pthread_mutex_destroy</code>.</p>
+</blockquote>
+<p>Aby dodać wsparcie dla wielowątkowości za pomocą biblioteki <code>pthreads</code> należy podczas kompilacji oraz konsolidacji (linkowania) użyć flagi <code>-pthread</code>. Powoduje ona definicję makra <code>_REENTRANT</code> oraz dołączenie biblioteki <code>pthreads</code>. Alternatywnie można użyć następujących dyrektyw (na początku pliku źródłowego):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define _REENTRANT</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;pthread.h&gt;</span></span></code></pre></div>
+<p>Dodatkowo podczas linkowania (konsolidacji) programu należy użyć opcji <code>-lpthread</code>, powodującej dołączenie odpowiedniej biblioteki funkcji wątkowych.</p>
+<h3 id="zadanie-1.-wzajemne-wykluczanie-wątków-z-użyciem-muteksów-wykluczanie.c">Zadanie 1. Wzajemne wykluczanie wątków z użyciem <em>muteksów</em> (<code>wykluczanie.c</code>)</h3>
+<p>Przy pomocy <strong>muteksów</strong> zaimplementować zadanie <strong>wzajemnego wykluczania</strong> dla <strong>wątków</strong>. Do demonstracji działania programu użyć sekwencji sterujących konsoli. Niech na przykład wątek wykonując swoją sekcję prywatną wypisuje odpowiedni komunikat po lewej stronie okna konsoli, natomiast będąc w sekcji krytycznej drukuje informacje po prawej stronie (w tym samym wierszu). Każdy wątek może kilka razy powtarzać powyższy cykl. Przy poprawnie zrealizowanym zadaniu wzajemnego wykluczania, po prawej stronie okna konsoli w danym momencie powinien zgłaszać się co najwyżej jeden wątek, pozostałe natomiast powinny zgłaszać się po lewej stronie.</p>
+<p>Do zademonstrowania operacji na zasobie dzielonym użyć np. wspólnej (globalnej) zmiennej licznikowej, zainicjowanej wartością <code>0</code>. Niech każdy z wątków na początku sekcji krytycznej przypisuje jej wartość swojemu prywatnemu licznikowi, następnie zwiększa wartość prywatnego licznika o <code>1</code>, a po pewnym czasie (użyć np. funkcji <code>usleep</code>) przypisuje jego wartość wspólnemu licznikowi.<br />
+<strong>Uwaga:</strong> Kolejność powyższych operacji jest istotna.<br />
+Sprawdzić, czy po zakończeniu działania wszystkich wątków wartość tego wspólnego licznika jest taka jaka powinna być.</p>
+<h2 id="pytania">Pytania</h2>
+<ul>
+<li>Czym się różni wątek od procesu?</li>
+<li>Opisać działanie, argumenty i wartość zwracaną przez funkcję <code>pthread_create()</code>.</li>
+<li>Funkcja <code>pthread_join()</code> jest odpowiednikiem której funkcji dla procesów?</li>
+<li>Czym się różnią muteksy od semaforów?</li>
+<li>Jak stworzyć muteks (dwa sposoby)?</li>
+<li>Opisać działanie operacji, które możemy wykonać na muteksach.</li>
+<li>Dlaczego musimy zdefiniować makro <code>_REENTRANT</code>?</li>
+<li>Co oznacza typ <code>void * (*) ()</code>?</li>
+<li>Co to sa operacje <strong>atomowe</strong>? Czy są konieczne?</li>
+</ul>
+<h2 id="wskazówki">Wskazówki</h2>
+<h4 id="sekwencje-sterujące-konsoli">Sekwencje sterujące konsoli</h4>
+<p>Przy pomocy sekwencji sterujących konsoli (Linux console escape and control sequences, patrz <code>man console_codes</code>) można ustawić m.in. pozycje i kolor wyświetlanego tekstu:</p>
+<ul>
+<li>Przesuniecie kursora do pozycji <strong>x, y</strong> na ekranie konsoli: <code>\033[y;xH</code><br />
+Zamiast symbolu <strong>y</strong> należy wstawić liczbę w systemie dziesiętnym określającą numer wiersza, <strong>x</strong> określa numer kolumny. Numeracja zaczyna się od 1.</li>
+<li>Włącz normalny tekst:  <code>\033[0m</code></li>
+<li>Włącz pogrubienie tekstu:  <code>\033[1m</code></li>
+<li>Włącz podkreślenie tekstu:  <code>\033[4m</code></li>
+<li>Włącz migający tekstu:  <code>\033[5m</code></li>
+<li>Włącz inwersje tekstu:  <code>\033[7m</code></li>
+<li>Zmiana koloru tekstu: <code>\033[</code><strong>x</strong><code>m</code><br />
+Zamiast symbolu <strong>x</strong> należy wstawić liczbę między 30 a 49.</li>
+<li>Wyczyszczenie ekranu: <code>\033c</code></li>
+</ul>
+<p>Przykład użycia sekwencji sterujących konsoli:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">\033</span><span class="st">[%d;%dH&quot;</span><span class="op">,</span> row<span class="op">,</span> col<span class="op">);</span></span></code></pre></div>
+<h2 id="ćwiczenia-dodatkowe">Ćwiczenia dodatkowe</h2>
+<h3 id="zadanie-a17.">Zadanie A17.</h3>
+<p>Zaimplementować niepodzielne rozkazy <code>TestAndSet</code> i <code>Swap</code> (patrz Wykład 5.) przy użyciu wątków i muteksów biblioteki POSIX oraz zastosować je do problemu <strong>wzajemnego wykluczania</strong>.</p>
+<h3 id="zadanie-a18.">Zadanie A18.</h3>
+<p>Zaimplementować problem <strong>producent–konsument</strong> z <span class="math inline"><em>n</em></span>-elementowym buforem cyklicznym przy użyciu wątków i muteksów biblioteki POSIX.</p>
+<hr />
+<p>Andrzej Görlich<br />
+<code>a.goerlich@outlook.com</code></p>
+</body>
+</html>

@@ -1,0 +1,31 @@
+Aleksandra Jaroszek
+=======================================================================
+
+*Zawartosc: 
+============
+
+Katalog zawiera programy z ćwiczenia ósmego w języku C:
+1.Program implementuje problem klienta i serweru. Klient wysyła do procesu serwera żądanie
+wykonania działania arytmetycznego, serwer wykonuje działanie i odsyła wynik do klienta. 
+Klient odbiera wynik i wypisuje go na ekranie. Używane są mechanizmy kolejek komunikatów dla
+wielu klientów naraz.
+
+Program sklada sie z 5 modulow:
+1) serwer.c - tworzy kolejkę komunikatów w trybie do otwierania. Działa on w petli nieskończonej.
+Odczytuje, wykonuje i odsyla do klienta dzialanie;
+2) klient.c - tworzy kolejkę komunikatów w trybie do czytania. Wysyła działanie do serwera i odbiera
+oraz wypisuje wynik;
+3) funkcjek.c - program implementujacy wlasna biblioteke funkcji;
+4) funkcjek.h - plik naglowkowy biblioteki.
+
+
+-> aby go uruchomić program, należy wykonać komende:
+	make run
+-> aby zakończyć proces SERWER należy użyć sekwencji klawiszy
+    	Ctrl C
+-> aby zakończyć proces SERWER należy użyć sekwencji klawiszy
+    	Ctrl D
+->aby wyczyścić zbędne pliki w katalogu:
+	make clean
+->aby zarchiwizować oraz skompresować katalog, należy wykonać komendę:
+ 	make tar

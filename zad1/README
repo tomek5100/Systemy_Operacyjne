@@ -1,0 +1,52 @@
+Autor: Tomasz Różycki, 		Kraków,17.03.2021
+
+
+******
+Zawartość:
+
+Katalog zawiera rozwiązane zadania z ćwiczenia 1:
+
+I. Program wypisuje identyfikatory UDI, GID, PID, PPID i PGID dla danego procesu
+
+II. Program trzykrotnie wywołuję funkcję fork w pętli for oraz wypisuje identyfikatory procesu macierzystego 
+   oraz potomnych. Za pomocą funkcji wait proces macierzysty oczekuje na zakończenie procesów potomnych. 
+
+III. Program jest analogiczny do programu II lecz funkcja wait została zastąpiona funkcją sleep. Procesy potomne
+     są adoptowane poprzez proces systemd, co można sprawdzić za pomocą polecenia pstree -p. Efekt ten uzyskałem
+     poprzez zabicie procesu macierzystego funkcją _exit oraz uśpieniem procesów potomnych. 
+
+IV. Program jest analogiczny do programu II lecz funkcja wait została zastąpiona funkcją sleep w taki sposób aby
+    procesy były wypisywane pokoleniami od najstarszego do najmłodszego, a proces macierzysty kończy się dopiero
+    po procesach potomnych. Dodatkowo przygotowałem plik drzewo.txt w którym sporządziłem "drzewo genealogiczne"
+    przykładowych utworzonych procesów z zaznaczonymi identyfikatorami PID, PPID I PGID.
+
+V.  Program jest analogiczny do programu II oraz przy użyciu funkcji setpgid procesy potomne stają się liderami 
+    swojej własnej grupy procesów. 
+
+-> W pliku odpowiedz.txt zawarłem odpowiedź z uzasadnieniem na pytanie o ilość procesów, które powstają przy
+   n-krotnym wywołaniu funkcji fork. 
+   
+******
+  Jak uruchomić programy:
+  
+ W katalogu znajduje się program Makefile do kompilacji, linkowania i uruchamiania powyższych programów, a także
+ do czyszczenia i archiwizacji katalogu.
+ 
+ ->Uruchomienie 1-szego programu, należy wykonać komendę:
+ 	make run1
+ ->Uruchomienie 2-ego programu, należy wykonać komendę:
+ 	make run2
+ ->Uruchomienie 3-ciego programu, należy wykonać komendę:
+ 	make run3
+ ->Uruchomienie 4-ego programu, należy wykonać komendę:
+ 	make run4
+ ->Uruchomienie 5-ego programu, należy wykonać komendę:
+ 	make run5
+ 	
+ ->Aby wyczyścić zbędne pliki w katalogu, należy wykonać komendę:
+ 	make clean	
+ 
+ ->Aby zarchiwizować oraz skompresować katalog, należy wykonać komendę:
+ 	make tar
+ 
+ 

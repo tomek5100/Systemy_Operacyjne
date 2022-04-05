@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Pamięć dzielona" />
+  <title>Zestaw 7</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cs.if.uj.edu.pl/css/modern/manual.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Zestaw 7</h1>
+<p class="author">Pamięć dzielona</p>
+<p class="date">Termin 11.05 - 01.06.2021</p>
+</header>
+<p><strong>Waga: 2.0</strong></p>
+<p>Należy zapoznać się ze skryptem <code>PamiecDzielona.pdf</code> oraz ze <em>Wskazówkami do pamięci dzielonej</em> na końcu zestawu.<br />
+Napisać odpowiedni plik <code>Makefile</code> oraz <code>README</code> dotyczący wszystkich programów w tym zestawie.</p>
+<h3 id="zadanie-1.-biblioteka-dynamiczna-libshmem.so">Zadanie 1. Biblioteka dynamiczna <code>libshmem.so</code></h3>
+<p>Napisać bibliotekę dynamiczną (dzieloną) <code>libshmem.so</code> zawierającą implementacje następujących funkcji obsługujących <strong>pamięć współdzieloną standardu <em>POSIX</em></strong>:</p>
+<ul>
+<li><code>int shmCreate(const char* name, int size);</code><br />
+Funkcja tworzy pamięć dzieloną o nazwie <code>name</code> i rozmiarze <code>size</code>.<br />
+Funkcja zwraca deskryptor obiektu pamięci dzielonej.<br />
+</li>
+<li><code>int shmOpen(const char* name);</code><br />
+Funkcja otwiera obiekt pamięci dzielonej i zwraca jego deskryptor.</li>
+<li><code>void shmRm(const char* name);</code><br />
+Usuwa obiekt pamięci dzielonej o nazwie <code>name</code>.</li>
+<li><code>void* shmMap(int fd, int size);</code><br />
+Odwzorowuje obiekt pamięci dzielonej o deskryptorze <code>fd</code> i rozmiarze <code>size</code> w przestrzeń adresową procesu.<br />
+Funkcja zwraca adres początku odwzorowanego obszaru pamięci dzielonej.<br />
+</li>
+<li><code>void shmClose(void *ptr, int fd, int size);</code><br />
+Usuwa odwzorowanie obiektu pamięci dzielonej i zamyka powiązany z nim deskryptor.</li>
+<li><code>int shmSize(int fd);</code><br />
+Zwraca rozmiar pamięci dzielonej określonej deskryptorem <code>fd</code>.<br />
+Proszę użyć funkcji systemowej <code>fstat</code>.</li>
+<li><code>void shmInfo(int fd);</code><br />
+Wypisuje informacje o pamięci dzielonej: prawa dostępu, rozmiar, właściciel, etc.</li>
+</ul>
+<p>Funkcje mają korzystać z odpowiednich funkcji systemowych i obsługiwać wszystkie możliwe błędy przez nie zwracane (wypisać odpowiedni komunikat (<code>perror</code>) i zakończyć działanie (<code>exit</code>)).<br />
+Należy napisać odpowiedni <strong>plik nagłówkowy</strong> <code>shmem.h</code>!<br />
+Aby utworzyć bibliotekę dzieloną <code>libshmem.so</code> należy:</p>
+<ol type="1">
+<li>Skompilować plik źródłowy <code>shmem.c</code> do pliku obiektowego <code>shmem.o</code> z opcją <code>-fPIC</code> (Position-Independent Code):</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-c</span> <span class="at">-O</span> <span class="at">-fPIC</span> shmem.c</span></code></pre></div>
+<ol start="2" type="1">
+<li>Utworzyć bibliotekę dzieloną <code>libshmem.so</code>:</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-shared</span> <span class="at">-o</span> libshmem.so shmem.o</span></code></pre></div>
+<ol start="3" type="1">
+<li>Aby użyć własnej biblioteki <code>libshmem.so</code> należy dodać ją opcją -l :</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> shmemuse.c <span class="at">-L.</span> <span class="at">-lshmem</span></span></code></pre></div>
+<p>Powyższe operacje mają być wykonywane automatycznie w pliku <code>Makefile</code>.</p>
+<p>Aby uruchomić program używający biblioteki dzielonej należy dodać do zmiennej środowiskowej <code>LD_LIBRARY_PATH</code> ścieżkę do katalogu zawierającego bibliotekę:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">LD_LIBRARY_PATH</span><span class="op">=</span>.</span></code></pre></div>
+<p><strong>Uwaga:</strong> Każda komenda w pliku <code>Makefile</code> wywołuje osobną powłokę (zmienna <code>SHELL</code>), dlatego polecenie <code>export</code> nie zadziała i trzeba ją ręcznie wywołać w powłoce.</p>
+<h3 id="zadanie-2.-shmuse.c">Zadanie 2. <code>shmuse.c</code></h3>
+<p>Napisać program, który zarządza pamięcią dzieloną używając biblioteki <code>libshmem.so</code>.<br />
+Program przyjmuje jednoliterowy argument i ewentualnie drugi argument:</p>
+<ul>
+<li><code>./shmuse.x c size</code> - Tworzy segment pamięci dzielonej o rozmiarze <code>size</code> bajtów.</li>
+<li><code>./shmuse.x d</code> - Usuwa segment pamięci dzielonej</li>
+<li><code>./shmuse.x r</code> - Wypisuje zawartość pamięci dzielonej na standardowe wyjście.</li>
+<li><code>./shmuse.x w &lt; input.txt</code> - Kopiuje zawartość standardowego wejścia do pamięci dzielonej. Sprawdzić rozmiar segmentu.</li>
+<li><code>./shmuse.x i</code> - Wypisuje informacje o pamięci dzielonej.</li>
+<li><code>./shmuse.x</code> - Wypisuje informacje o użyciu tego programu.</li>
+</ul>
+<p>Jak dla programu <code>mcint</code> w pliku <code>Makefile</code> w pakiecie <code>StartSO</code>, należy stworzyć dwie wersje <code>shmuse1.x</code> i <code>shmuse2.x</code> dla obu sposobów wskazywania lokalizacji biblioteki dymaicznej.</p>
+<p><strong>Zadanie:</strong><br />
+Zademonstrować działanie programu (utworzyć, zapisać, wypisać, usunąć).</p>
+<h3 id="zadanie-3.-producent-i-konsument">Zadanie 3. Producent i konsument</h3>
+<p>Przy pomocy pamięci dzielonej oraz semaforów standardu PSOIX zaimplementować problem <em>,,Producenta i Konsumenta’’</em> dla N-elementowego <a href="https://pl.wikipedia.org/wiki/Bufor_cykliczny">bufora cyklicznego</a> (tzn. po dojściu do końca bufora wracamy na jego początek) umieszczonego w pamięci dzielonej, gdzie elementem bufora jest pewna ustalona porcja bajtów. Dla zademonstrowania, że nie doszło do utraty ani zwielokrotnienia towaru, niech <strong>Producent pobiera</strong> <em>,,surowiec’’</em> (np. porcje bajtów lub liczby typu <code>int</code>) z pliku tekstowego <code>magazyn.txt</code> i wstawia go jako towar do bufora, a <strong>Konsument</strong> niech umieszcza pobrany z bufora towar w innym pliku tekstowym <code>schowek.txt</code>. Po zakończeniu działania programów (wyczerpaniu zasobów ,,surowca") oba pliki tekstowe powinny być identyczne. Oba procesy niech drukują odpowiednie komunikaty na ekranie, w tym towar, który przesyłają. Do zasymulowania różnych szybkości działania programów użyć funkcji <a href="http://www.linux.pl/man/index.php?section=&amp;command=usleep"><code>usleep</code></a> np. z losowym czasem usypiania. Należy użyć <strong>dwóch semaforów</strong>, pierwszy blokuje zapis (producent) gdy bufor cykliczny jest pełny, drugi blokuje odczyt (konsument) gdy bufor cykliczny jest pusty. Struktura bufora cyklicznego, która znajduje się w pamięci dzielonej może mieć postać:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> cykliczny <span class="op">{</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   <span class="dt">int</span> size<span class="op">;</span>            <span class="co">// Całkowity rozmiar bufora </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>   <span class="dt">int</span> beg<span class="op">;</span>             <span class="co">// Pierwszy element do odczytu </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>   <span class="dt">int</span> end<span class="op">;</span>             <span class="co">// Element za ostatnim zapisanym elementem </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>   towar buf<span class="op">[</span>ROZMIAR<span class="op">];</span>  <span class="co">// Dane, własny typ &#39;towar&#39; może być równoważny np. &#39;int&#39; </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="op">};</span> </span></code></pre></div>
+<p>Należy użyć własnych <strong>bibliotek</strong> <code>libsem.a</code> i <code>libshmem.so</code>. Implementacje <strong>producenta</strong> (<code>producent.c</code>) i <strong>konsumenta</strong> (<code>konsument.c</code>) umieścić w <strong>oddzielnych</strong> programach, a uruchamiać je przez funkcje <code>fork()</code> i <code>exec()</code> z dodatkowego procesu <strong>macierzystego</strong> (<code>glowny.c</code>), który na początku powinien <strong>utworzyć</strong> i <strong>zainicjować</strong> <strong>semafory</strong> oraz <strong>pamięć dzieloną</strong>, a po zakończeniu procesów potomnych je <strong>usunąć</strong>. Wydzielić funkcje, które zapisują i odczytują z wspólnego bufora cyklicznego.</p>
+<h2 id="wskazówki">Wskazówki</h2>
+<blockquote>
+<ul>
+<li>Do <strong>synchronizacji</strong> jednego producenta i jednego konsumenta wystarczą <strong>dwa semafory ogólne</strong>: jeden do <strong>wstrzymywania producenta</strong> kiedy bufor jest <strong>pełny</strong> (inicjowany liczbą elementów bufora), a drugi do <strong>wstrzymywania konsumenta</strong> kiedy bufor jest <strong>pusty</strong> (inicjowany zerem).</li>
+<li><strong>Synchronizacja</strong> powinna dotyczyć dostępu do <strong>pojedynczego elementu</strong> bufora, a <strong>nie</strong> do <strong>całego bufora</strong>, tzn. <strong>producent</strong> i <strong>konsument</strong> mogą <strong>w tym samym czasie</strong> operować na <strong>różnych elementach</strong> bufora.</li>
+<li>Dla <strong>wielu producentów i konsumentów</strong> wystarczą <strong>dwa dodatkowe semafory binarne</strong> - do <strong>wzajemnego wykluczania</strong> każdego typu procesów.</li>
+</ul>
+</blockquote>
+<h2 id="pamięć-dzielona-standardu-posix---wskazówki">Pamięć dzielona standardu POSIX - wskazówki</h2>
+<p>Pamięć dzielona jest najszybszą metodą komunikacji pomiędzy niezależnymi procesami, zwłaszcza w przypadku przekazywania dużej ilości danych.</p>
+<blockquote>
+<p>Oryginalny <em>X Window System</em>, czyli system okien (graficzny interfejs użytkownika) pod Linuxem, wykorzystywał mechanizm TCP do komunikacji pomiędzy klientem (aplikacjami) a serwerem wyświetlania. Takie rozwiązanie jest oczywiście powolne, szczególnie w przypadku pracy na jednym komputerze (czyli zazwyczaj, choć X Window pozwala na transparentną pracę zdalną np. przez SSH).</p>
+</blockquote>
+<blockquote>
+<p>Nowoczesny serwer wyświetlania <a href="https://wayland.freedesktop.org/"><em>Wayland</em></a> wykorzystuje do komunikacji z klientami model pamięć współdzielonej standardu POSIX (pliki mapowane w pamięci, ang. <em>file-backed shared memory model</em>). Mapowany plik nie musi być zapisany na dysku - co więcej - nie powinien i nie jest, ale deskryptor do otwartego pliku jest przekazywany przez klienta do serwera. Plik jest jedynie plikiem tymczasowym utworzonym, np. w wyniku wywołania funkcji <code>mkstemp</code>, i jest usuwany jeszcze w trakcie korzystania z pamięci dzielonej, aby inne procesy (nawet tego samego użytkownika) nie miały do niego dostępu.</p>
+</blockquote>
+<p><strong>Ciekawostka:</strong> Utworzona pamięć dzielona standardu POSIX jest widoczna jako plik o podanej nazwie i odpowiednich prawach dostępu w katalogu <code>/dev/shm</code> (pseudo system plików <code>tmpfs</code>).</p>
+<p><strong>Ciekawostka:</strong><br />
+Parametr ochrony (ang. <em>protection option</em>) <code>PROT_NONE</code> jest wykorzystywany <em>między innymi</em> do ochrony przed atakami typu <em>buffer overflow</em> (przepełnienie bufora) poprzez wprowadzenie mechanizmu <em>guard pages</em>. Jest wykorzystywany przez wirtualne maszyny, interfejsy sieciowe, interpretery, …</p>
+<h2 id="pamięć-dzielona-standardu-posix">Pamięć dzielona standardu POSIX</h2>
+<p>Przegląd funkcji dot. <em>pamięci dzielonej</em> standardu POSIX można uzyskać przy pomocy komendy</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> shm_overview.7</span></code></pre></div>
+<h3 id="schemat-programu-który-tworzy-pamięć-współdzieloną-standardu-posix-i-do-niej-pisze">Schemat programu, który tworzy pamięć współdzieloną standardu POSIX i do niej pisze</h3>
+<blockquote>
+<p><strong>Uwaga:</strong> Należy obsłużyć możliwe błędy dla każdego wywołania funkcji systemowych.</p>
+</blockquote>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>name <span class="op">=</span> <span class="st">&quot;/shared-test&quot;</span><span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">int</span> size <span class="op">=</span> <span class="dv">1024</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Tworzy pamięć dzieloną widoczną jako plik /dev/shm/shared-test</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> fd  <span class="op">=</span> shm_open<span class="op">(</span>name<span class="op">,</span> O_RDWR <span class="op">|</span> O_CREAT <span class="op">|</span> O_EXCL<span class="op">,</span> <span class="bn">0666</span><span class="op">);</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Zmiana rozmiaru pamięci dzielonej / pliku</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    ftruncate<span class="op">(</span>fd<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">// Odwzorowanie pamięci dzielonej w przestrzeni adresowej procesu</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> <span class="op">*</span>ptr <span class="op">=</span> mmap<span class="op">(</span>NULL<span class="op">,</span> size<span class="op">,</span> PROT_READ <span class="op">|</span> PROT_WRITE<span class="op">,</span> MAP_SHARED<span class="op">,</span> fd<span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">// Zapis do pamięci dzielonej pod adresem ptr</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    strcpy<span class="op">(</span>ptr<span class="op">,</span> <span class="st">&quot;Hello World in file-backed shared memory&quot;</span><span class="op">);</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">// Usunięcie odwzorowania</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    munmap<span class="op">(</span>ptr<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">// Zamknięcie deskryptora</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    close<span class="op">(</span>fd<span class="op">);</span></span></code></pre></div>
+<h3 id="schemat-programu-który-czyta-z-pamięci-współdzielonej-i-ją-usuwa">Schemat programu, który czyta z pamięci współdzielonej i ją usuwa</h3>
+<blockquote>
+<p><strong>Uwaga:</strong> Należy obsłużyć możliwe błędy dla każdego wywołania funkcji systemowych.</p>
+</blockquote>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>name <span class="op">=</span> <span class="st">&quot;/shared-test&quot;</span><span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">int</span> size <span class="op">=</span> <span class="dv">1024</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Otwarcie obiektu pamięci dzielonej tylko do odczytu</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> fd  <span class="op">=</span> shm_open<span class="op">(</span>name<span class="op">,</span> O_RDONLY<span class="op">,</span> <span class="bn">0666</span><span class="op">);</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">// Odwzorowanie pamięci dzielonej w przestrzeni adresowej procesu</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> <span class="op">*</span>ptr <span class="op">=</span> mmap<span class="op">(</span>NULL<span class="op">,</span> size<span class="op">,</span> PROT_READ<span class="op">,</span> MAP_SHARED<span class="op">,</span> fd<span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">// Wypisanie zawartości pamięci dzielone (odczyt z pamięci)</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Shared data: %s</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> ptr<span class="op">);</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">// Usunięcie odwzorowania</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    munmap<span class="op">(</span>ptr<span class="op">,</span> size<span class="op">);</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">// Zamknięcie deskryptora</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    close<span class="op">(</span>fd<span class="op">);</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">// Usunięcie obiektu pamięci dzielonej</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    shm_unlink<span class="op">(</span>name<span class="op">);</span></span></code></pre></div>
+<h2 id="pytania-do-zestawu">Pytania do zestawu</h2>
+<ul>
+<li>Szczegółowo opisz działanie semaforów z zadaniu 3.</li>
+<li>Podać w <em>pseudokodzie</em> uogólnienie rozwiązania problemu z zadania 3. na przypadek wielu producentów i konsumentów.</li>
+<li>W jaki sposób niezależne procesy mają dostęp do tego samego segmentu pamięci dzielonej?</li>
+<li>Czym jest biblioteka dynamiczna? Jakie są jej zalety?</li>
+<li>Jak utworzyć bibliotekę dynamiczną? Jak jej używać? Jakie są nazwy plików, które są bibliotekami dynamicznymi?</li>
+</ul>
+<h2 id="ćwiczenia-dodatkowe">Ćwiczenia dodatkowe</h2>
+<h3 id="zadanie-a10.">Zadanie A10.</h3>
+<p>Zaimplementować uogólnienie zadania 3. na przypadek wielu producentów i wielu konsumentów.</p>
+<hr />
+<p>Andrzej Görlich<br />
+<code>a.goerlich@outlook.com</code></p>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Andrzej Görlich" />
+  <title>Wskazówki do ćwiczeń z Systemów operacyjnych</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cs.if.uj.edu.pl/css/modern/manual.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Wskazówki do ćwiczeń z Systemów operacyjnych</h1>
+<p class="author">Andrzej Görlich</p>
+<p class="date">Systemy operacyjne</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Spis treści</h2>
+<ul>
+<li><a href="#materiały">Materiały</a></li>
+<li><a href="#wybrane-edytory-tekstu">Wybrane edytory tekstu</a></li>
+<li><a href="#pracownia-komputerowa">Pracownia komputerowa</a></li>
+<li><a href="#literatura">Literatura</a></li>
+<li><a href="#narzędzia">Narzędzia</a></li>
+<li><a href="#jak-wysyłać-programy-na-platformę-pegaz">Jak wysyłać programy na platformę <span>Pegaz</span></a></li>
+<li><a href="#typowe-błędy">Typowe błędy</a></li>
+<li><a href="#progam-make">Progam make</a></li>
+<li><a href="#procesy">1. Procesy</a></li>
+<li><a href="#sygnały">2. Sygnały</a></li>
+</ul>
+</nav>
+<hr />
+<!--
+date:   02.03.2021 
+-->
+<h1 id="materiały">Materiały</h1>
+<p>Proszę zapoznać się z następującymi materiałami</p>
+<ul>
+<li>Andrzej Görlich, <a href="IntroMake.html?web=1">Wstęp do GNU Make</a></li>
+<li>Wiesław Płaczek, <a href="PodstawyLinuksa.pdf">Podstawy Linuxa</a></li>
+<li>Andrzej Siódmok, <a href="ZarysLinuxa.pdf">Zarys Linuxa</a></li>
+</ul>
+<h1 id="wybrane-edytory-tekstu">Wybrane edytory tekstu</h1>
+<h3 id="tekstowe">Tekstowe</h3>
+<ul>
+<li><strong>vim</strong> - standard dostępny w praktycznie każdej instalacji Linux i UNIX</li>
+<li><strong>emacs</strong> - rozbudowany edytor tekstu</li>
+<li><strong>nano</strong> - prosty edytor tekstu, podświetlana składnia</li>
+<li><strong>Midnight Commander</strong> - menedżer plików <code>mc</code> na kształt Norton Commander.<br />
+Posiada własny edytor tekstu <code>mcedit</code> - prostu w użyciu, ale z szerokim zakresem możliwości (kolorowanie składni, kopiowanie między plikami)</li>
+</ul>
+<h3 id="graficzne">Graficzne</h3>
+<ul>
+<li><strong>gedit</strong> - domyślny edytor dla środowiska Gnome</li>
+<li><strong>geany</strong></li>
+<li><strong>Code Blocks</strong></li>
+<li><strong>Sublime Text</strong> - dostępny pod systemami <code>Linux</code>, <code>Mac OS</code> i <code>Windows</code>, szybki (napisany w <code>C++</code>), liczne możliwości, pluginy</li>
+<li><strong>Visual Studio Code</strong> - darmowy edytor stworzony przez Microsoft o otwartym kodzie źródłowym, liczne dodatki, zdalna edycja</li>
+</ul>
+<h1 id="pracownia-komputerowa">Pracownia komputerowa</h1>
+<h3 id="dostęp-do-pracowni-przez-ssh">Dostęp do pracowni przez SSH</h3>
+<p><del><a href="http://149.156.64.171/SPKFAIS/node/23">Dostęp do Studenckiej Pracowni Komputerowej poprzez SSH</a></del></p>
+<p>Na węzeł dostępowy Studenckiej Pracowni Komputerowej FAIS można zalogować się poprzez protokół SSH pod adresem <code>spk-ssh.if.uj.edu.pl</code>. Adres IP serwera to <code>149.156.43.64</code> (widziany z zewnątrz) i <code>172.30.24.11</code> (z pracowni).<br />
+Logowanie:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@spk-ssh.if.uj.edu.pl</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ssh &lt;username&gt;@149.156.43.64    # Logowanie na serwer SPK z zewnątrz</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ssh &lt;username&gt;@172.30.24.11     # Logowanie na serwer SPK z pracowni</span></span></code></pre></div>
+<h3 id="terminal-i-edytor">Terminal i edytor</h3>
+<p>Na górnym pasku pulpitu interfejsu graficznego <em>MATE</em> systemu <em>Linux</em> odnaleźć następujące narzędzia:</p>
+<ul>
+<li>Edytor <code>emacs</code>: <strong>Menu</strong> → <strong>Programowanie</strong> → <strong>GNU Emacs 25 (GUI)</strong></li>
+<li>Edytor <code>kate</code>: <strong>Menu</strong> → <strong>Akcesoria</strong> → <strong>Kate</strong></li>
+<li>Edytor <code>gvim</code>: <strong>Menu</strong> → <strong>Akcesoria</strong> → <strong>GVim</strong></li>
+<li>Edytor <code>plum</code>: <strong>Menu</strong> → <strong>Akcesoria</strong> → <strong>Plum</strong></li>
+</ul>
+<p>Przyciskając <em>prawym klawiszem myszy</em> przeciągnąć i upuścić ikony powyższych narzędzi na górny lub dolny <em>pasek pulpitu</em>.<br />
+Następnie uruchamiać narzędzia klikając <em>lewym klawiszem myszy</em> na odpowiednie ikony na pasku.</p>
+<h3 id="formatowanie-kodu-źródłowego-w-edytorze-emacs">Formatowanie kodu źródłowego w edytorze <code>emacs</code></h3>
+<ul>
+<li>Edytor <code>emacs</code> <strong>na bieżąco</strong> w trakcie pisania dba o odpowiednie <strong>formatowanie kodu źródłowego</strong> w <em>języku C</em>stosownie do pewnych wbudowanych reguł (wcięcia, podświetlanie słów kluczowych itp.).</li>
+<li><strong>Dowolny kod źródłowy</strong> w <em>języku C</em> można w <strong>dowolnym momencie sformatować</strong> zaznaczając (podświetlając) odpowiedni fragment <strong>lewym klawiszem myszy</strong>, a następnie naciskając klawisz <strong>tabulacji</strong> (lub wybierając z górnego paska edytora zakładkę <code>C</code>, a następnie klikając na <strong>Indent Line or Region</strong>).</li>
+</ul>
+<h1 id="literatura">Literatura</h1>
+<p>Studenci Uniwersytetu Jagiellońskiego posiadają bezpłatny dostęp on-line do książek specjalistycznych poprzez <a href="https://fais.uj.edu.pl/wydzial/biblioteka/ogloszenia/-/journal_content/56_INSTANCE_eU9ajoHKM3cI/41628/143497977">bazę NASBI</a> (w tym informatycznych np. wydawnictwa Helion). Aby korzystać z tej bazy, trzeba się zgłosić do biblioteki po kod dostępu potrzebny przy rejestracji.</p>
+<h1 id="narzędzia">Narzędzia</h1>
+<h2 id="gnu-compiler-collection">GNU Compiler Collection</h2>
+<p><strong>GCC</strong> to zestaw kompilatorów różnych języków programowania (front-endy: <em>C, C++, Objective-C, Fortran, Ada, Go, D</em>) rozwijany w ramach Pojektu GNU. W skład <em>GCC</em> wchodzi między innymi kompilator języka C uruchamiany poleceniem <code>gcc</code>. Sam program <code>gcc</code> pełni jednocześnie kilka funkcji:</p>
+<ol type="1">
+<li>Preprecesora (przetworzenie dyrektyw preprocesora w kodzie źródłowym)</li>
+<li>Kompilatora (kompilacja pliku źródłowego w C (<code>.c</code>) do assemblera (<code>.s</code>))</li>
+<li>Asemblera (asemblacja kodu źródłowego asemblera (<code>.s</code>) do pliku obiektowego (<code>.o</code>))</li>
+<li>Linkera (konsoliduje moduły (<code>.o</code>) i biblioteki statyczne (<code>.a</code>) tworząc plik wykonywalny (<span class="tooltip"><code>.x</code><span class="tooltiptext">Rozszerzenie <code>.x</code> jest konwencją używaną na zajęciach</span></span>))</li>
+</ol>
+<p>Tradycyjną nazwą pliku wykonywalnego generowaną przez <em>linker</em> jest <code>a.out</code>. Wynika to z zaszłości historycznych, <a href="https://pl.wikipedia.org/wiki/A.out">a.out</a> jest jednym z formatów plików wykonywalnych używanych m.in. w Uniksie. Został on wyparty przez format COFF a następnie przez <a href="https://pl.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF</a> (Executable and Linkable Format), który jest używany aktualnie.</p>
+<p>Dlatego jeżeli nie użyjemy przełącznika <code>-o</code> w programie <code>gcc</code> domyślnie stworzony zostanie plik wykonywalny o nazwie <code>a.out</code>, który pomimo nazwy jest w formacie <strong>ELF</strong>. Linux potrafi uruchamiać programy w formatach zarówno <em>a.out</em> oraz <em>ELF</em>.<br />
+<strong>Uwaga:</strong> Dotyczy to jedynie etapu <em>linkowania</em> a nie <em>kompilacji</em>.</p>
+<h2 id="program-tar">Program <code>tar</code></h2>
+<p>Aby spakować katalog <code>nazwa_katalogu</code> do archiwum <code>nazwa_archiwum.tar.gz</code> należy użyć następującej komendy z poziomu katalogu <strong>zawierającego</strong> kompresowany katalog:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> zcvf nazwa_archiwum.tar.gz nazwa_katalogu</span></code></pre></div>
+<p>Aby rozpakować archiwum <code>nazwa_archiwum.tar.gz</code> należy użyć komendy:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> zxvf nazwa_archiwum.tar.gz</span></code></pre></div>
+<p>Znaczenie opcji:</p>
+<dl>
+<dt>c</dt>
+<dd><strong>c</strong>reate - stwórz archiwum
+</dd>
+<dt>x</dt>
+<dd>e<strong>x</strong>tact - rozapkuj archiwum
+</dd>
+<dt>f</dt>
+<dd><strong>f</strong>ile - nazwa pliku z archiwum
+</dd>
+<dt>z</dt>
+<dd>g<strong>z</strong>ip - (de)kompresuj używając <code>gzip</code>
+</dd>
+<dt>v</dt>
+<dd><strong>v</strong>erbose - wypisz informacje
+</dd>
+</dl>
+<p>Rozszerzenie <code>.tgz</code> można stosować wymiennie z <code>.tar.gz</code>.</p>
+<h1 id="jak-wysyłać-programy-na-platformę-pegaz">Jak wysyłać programy na platformę <a href="https://pegaz.uj.edu.pl/">Pegaz</a></h1>
+<ol type="1">
+<li>Pliki <code>Makefile</code>, <code>README</code> oraz pliki nagłówkowe i źródłowe w <em>języku C</em> (<code>*.c</code>, <code>*.h</code>) należy umieścić w katalogu <code>Zestaw##</code> (<code>##</code> oznacza numer zestawu).</li>
+<li>Przed załadowaniem programów na platformę <strong>Pegaz</strong> należy odpowiedni katalog <a href="#program-tar">zarchiwizować i skompresować przy użyciu programu <code>tar</code></a> do archiwum o nazwie <code>&lt;Imię&gt;&lt;Nazwisko&gt;_Zestaw##.tar.gz</code>. Archiwum należy nazwać swoim <strong>nazwiskiem</strong> i numerem zestawu.<br />
+Przykład archiwizacji (należy wykonać w katalogu <strong>zawierającym katalog</strong> <code>Zestaw1</code>):</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> zcvf JanKowalski_Zestaw01.tar.gz Zestaw01</span></code></pre></div>
+<ol start="3" type="1">
+<li>Polecenie można dodać do pliku <code>Makefile</code> tak jak to zrobiono w archiwum <code>StartSO.tar.gz</code>.</li>
+<li>Należy załączyć jedynie pliki źródłowe (tekstowe). <strong>Nie załączać plików z danymi (binarnych),</strong> proszę usunąć zbędne pliki (np. <code>*.x</code>, <code>*.o</code>, inne pliki binarne, kopie zapasowe, etc.). W nazwach plików i katalogów nie używać polskich liter i spacji.</li>
+<li>Archiwum należy załadować na platformę <a href="https://pegaz.uj.edu.pl/">Pegaz</a>.</li>
+<li>Wysłany plik archiwum można usuwać z <em>platformy</em> lub zamieniać na inny dopóki się go nie zatwierdzi.</li>
+<li>Ostateczną wersję należy <strong>zatwierdzić</strong>. Wówczas tylko prowadzący ćwiczenia może udostępnić możliwość jego zamiany.</li>
+</ol>
+<!-- 
+## Wagi zestawów
+
+| Zestaw |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |  9   |  10  |
+| :----: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+|  Waga  | 1.0  | 0.5  | 1.5  | 0.8  | 1.2  | 1.5  | 2.0  | 1.0  | 1.5  | 0.5  |
+
+ -->
+<!--25.02.2020-->
+<h1 id="typowe-błędy">Typowe błędy</h1>
+<h2 id="błędy-w-wysłanym-archiwum">Błędy w wysłanym archiwum</h2>
+<p>Czasami wysyłają Państwo pliki w błędnym formacie lub strukturą katalogów.</p>
+<p>Proszę sprawdzić nazwę katalogu (<code>Zestaw01</code>) i nazwę archiwum, w szczególności jego rozszerzenia (<code>.tar.gz</code>), oraz upewnić się, że archiwum jest poprawnie skompresowane (opcja <code>-z</code> programu <code>tar</code>).</p>
+<h2 id="komunikaty-z-ostrzeżeniami">Komunikaty z ostrzeżeniami</h2>
+<p>Ostrzeżenia typu</p>
+<pre><code>warning: implicit declaration of function</code></pre>
+<p>oznaczają, że nie dodano wymaganego pliku nagłówkowego (<code>.h</code>). Proszę przeczytać dokumentację (<code>man</code>) dla problematycznej funkcji w odpowiedniej sekcji (zazwyczaj 2).</p>
+<h2 id="błąd-kompilacji">Błąd kompilacji</h2>
+<p>Jeżeli podczas kompilacji wyświetla się komunikat</p>
+<pre><code>warning: implicit declaration of function ‘getpgid’</code></pre>
+<p>proszę zapoznać się z dokumentacją dla funkcji <code>getpgid</code> w katalogu <code>2 (system calls)</code>, zamiast domyślnego <code>3P (POSIX functions)</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> 2 getpgid</span></code></pre></div>
+<p>Z dokumentacji wynika, że należy zdefiniować macro preprocesora <code>_XOPEN_SOURCE</code> z wartością co najmniej <code>500</code>, na przykład używając dyrektywy</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define _XOPEN_SOURCE 500</span></span></code></pre></div>
+<p>Alternatywnie można zdefiniować <code>_POSIX_C_SOURCE</code>,</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define _POSIX_C_SOURCE 200809L</span></span></code></pre></div>
+<p>Dyrektywa ta musi się znaleźć przed dołączeniem plików nagłówkowych w pliku źródłowym, który wywołuje funkcję <code>getpgid</code>, najlepiej na samym początku.</p>
+<p>Problem ten wiąże się ze wsteczną kompatybilnością plików nagłówkowych (standard C99) i definiując powyższe makra komunikujemy kompilatorowi, że chcemy używać rozszerzeń (nowszych wersji). Proszę zauważyć, że opisany problem znika dla kompilatora <code>gcc</code> gdy nie stosujemy standardu <code>C99</code> (opcja kompilatora <code>-std=c99</code>), ponieważ domyślnym standardem tego kompilatora jest <code>gnu99</code> (opcja kompilatora <code>-std=gnu99</code>). Używanie opcji <code>-std=c99</code>, zwiększa przenośność kody, gdyż będzie poprawnie kompilowany przez inne kompilatory.</p>
+<h1 id="progam-make">Progam make</h1>
+<p>Należy napisać plik <code>Makefile</code> w taki sposób, aby komenda <code>make</code> kompilowała <strong>wszystkie</strong> programy w zestawie. Programy, które Państwo piszą muszą się kompilować z opcją <code>-Wall</code> (proszę dodać <code>-Wall</code> do zmiennej <code>CFLAGS</code> w <code>Makefile</code>) bez żadnych błędów, ani ostrzeżeń. Ostrzeżenia zazwyczaj świadczą o niepoprawnym kodzie (jak również pewnym dyletanctwie).</p>
+<h5 id="uwagi">Uwagi</h5>
+<ul>
+<li>Zdefiniować i używać zmienne, np. <code>CFLAGS</code>.</li>
+<li>Używać zmiennych automatycznych (<code>$@</code>, <code>$^</code>, <code>$&lt;</code>).</li>
+<li>Zdefiniować i użyć reguły wzorcowe.</li>
+<li>Etap linkowania (<code>.o → .x</code>) powinien używać flag w <code>LDFLAGS</code>, a nie <code>CFLAGS</code>!</li>
+<li>Nie dodawać komend, jeżeli są one już w regułach wzorcowych.</li>
+<li>Korzystać z reguł wbudowanych.</li>
+<li>Pamiętać o zależności od plików nagłówkowych.</li>
+<li>Wbudowana zmienna <code>RM</code> już zawiera flagę <code>-f</code>. Nie używać flagi <code>-r</code>.</li>
+<li>Nie dodawać akcji <code>run</code>.</li>
+</ul>
+<p>Fragment</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">main.x:</span><span class="dt"> main.o procinfo.o</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    gcc -s -lm -o main.x main.o procinfo.o</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dv">main.o:</span><span class="dt"> main.c procinfo.h</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    gcc -Wall -O3 main.c</span></code></pre></div>
+<p>powinien wyglądać następująco</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">main.x:</span><span class="dt"> main.o procinfo.o</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dv">main.o:</span><span class="dt"> main.c procinfo.h</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="dv">%.x:</span><span class="dt"> %.o</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> <span class="ch">$(</span><span class="dt">LDFLAGS</span><span class="ch">)</span> -o <span class="ch">$@</span> <span class="ch">$^</span></span></code></pre></div>
+<h1 id="procesy">1. Procesy</h1>
+<p>Informacje o procesie (identyfikatory) powinna wypisywać funkcja <code>procinfo</code>, należy ją wywołać w głównym programie (np. <code>procesy.c</code>). Nie należy bezpośrednio wypisywać (np. przy użyciu <code>printf</code>) identyfikatorów w funkcji <code>main</code>. Implementacja funkcji <code>procinfo</code> musi znajdować się w module <code>procinfo</code> (<code>procinfo.c</code> + <code>procinfo.h</code>), a nie w głównym programie (np. <code>procesy.c</code>).</p>
+<h3 id="wskazówki-do-programu-kopiuj.c">Wskazówki do programu <code>kopiuj.c</code></h3>
+<p>Należy sprawdzić czy liczba argumentów jest poprawna (<code>argc == 3</code>). W przypadku złej liczby argumentów wypisać komunikat o prawidłowym użyciu programu. W tym celu należy użyć aktualnej nazwy programu (<code>argv[0]</code>) i zakończyć program (<code>exit()</code>).</p>
+<p>Program powinien przekopiować zawartość pliku, którego nazwa znajduje się w <code>argv[1]</code>, do pliku o nazwie, która znajduje się w <code>argv[2]</code>. Nie należy podawać ścieżek do plików (nazw) na sztywno w plikach źródłowych, w prawie każdym przypadku jest to zła praktyka, którą należy unikać.</p>
+<h4 id="schemat-postępowania">Schemat postępowania</h4>
+<p>Przy użyciu funkcji <code>open()</code> należy otworzyć plik o nazwie <code>argv[1]</code> do odczytu z flagą <code>O_RDONLY</code>. Przy użyciu funkcji <code>open()</code> należy otworzyć plik o nazwie <code>argv[2]</code> do zapisu z flagą <code>O_WRONLY | O_CREAT</code> i odpowiednimi prawami dostępu (prawa dostępu omówiono na zajęciach). Stworzyć bufor o wybranym rozmiarze używając <code>malloc()</code>, ewentualnie statyczną tablicę poza funkcją. W pętli odczytywać dane z pliku źródłowego do bufora używając <code>read()</code>, proszę sprawdzić w manualu kiedy dojedziemy do końca pliku, i zapisać tę samą liczbę bajtów do pliku docelowego. Zamknąć deskryptory i zwolnić pamięć.</p>
+<h1 id="sygnały">2. Sygnały</h1>
+<h3 id="unikać-wielokrotnego-zagnieżdżania">Unikać wielokrotnego zagnieżdżania</h3>
+<p>Tam gdzie to możliwe, należy unikać wielokrotnego zagnieżdżania <code>switch</code> w <code>switch</code> lub <code>if</code> w <code>if</code>. Dla zwiększenia przejrzystości, lepiej rozdzielić funkcjonalność i wprowadzić dodatkowe funkcje.</p>
+<h3 id="obsługa-błędów">Obsługa błędów</h3>
+<p>Prawie wszystkie funkcje systemowe i biblioteczne mogą zakończyć się niepowodzeniem. Błędy należy obsłużyć w każdym przypadku, także funkcji <code>signal</code>, <code>wait</code>, <code>kill</code>. Można stworzyć funkcję lub makro specjalnie do tego przeznaczoną.</p>
+<h3 id="nie-wpisywać-wartości-na-sztywno">Nie wpisywać wartości na sztywno</h3>
+<p>Należy unikać wpisywania na sztywno wartości liczbowych (np. liczby procesów potomnych), ale także ścieżek do plików/katalogów. Lepiej przechowywać wartości w zmiennych lub stałych globalnych, typach wyliczeniowych (<code>enum</code>) lub makrach:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> children <span class="op">=</span> <span class="dv">4</span><span class="op">;</span>        <span class="co">// Zmienna globalna, choć nie stała</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">int</span> children <span class="op">=</span> <span class="dv">4</span><span class="op">;</span>  <span class="co">// Lepiej, nie zawsze można zastosować</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                         <span class="co">// (np. do rozmiaru statycznych tablic)</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CHILDREN 4       </span><span class="co">// Stała, ale brak kontroli typu</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> <span class="op">{</span>                   <span class="co">// Typ wyliczeniowy</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> <span class="dv">4</span>         <span class="co">// Najlepiej, prawdziwa stała typu int (enum trick)</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+</body>
+</html>

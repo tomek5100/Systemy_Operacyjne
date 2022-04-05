@@ -1,0 +1,36 @@
+
+define bufor N
+
+typdef struct { ... } Towar;
+Towar bufor[N];
+int wstaw = 0, wyjmij = 0;
+semaphore PROD = N;
+semaphore KONS = 0;
+semaphore PRODWW = 1;
+semaphore KONSWW = 1;
+
+Producent
+
+Towar towarProd;
+while (1) 
+{
+	P(PRODWW);
+	P(PROD);
+	bufor[wstaw] = towarProd;
+	wstaw = (wstaw + 1) % N;
+	V(KONS);
+	V(PRODWW);
+}
+
+Konsument
+
+Towar towarKons;
+while (1) 
+{
+	P(KONSWW);
+	P(KONS);
+	bufor[wstaw] = towarProd;
+	wstaw = (wstaw + 1) % N;
+	V(PROD);
+	V(KONSWW);
+}

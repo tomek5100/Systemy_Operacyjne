@@ -1,0 +1,5 @@
+Ile procesów powstanie przy n-krotnym wywołaniu funkcji fork-exec jak wyżej i dlaczego?
+
+Powstanie n-procesów ponieważ poprzez wywołanie funkcji fork-exec dajemy każdemu procesowi 
+"coś" do zrobienia, nie są kopiami procesu macierzystego lecz wykonują osobny program, 
+po czym "popełniają samobójstwo". W przypadku tego zadania będą to 3 procesy.

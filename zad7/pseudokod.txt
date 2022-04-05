@@ -1,0 +1,49 @@
+#define NELE 20                     //Rozmiar elementu bufora
+#define NBUF 5                      //liczba elementow bufora
+
+
+typedef struct{                     //definicja typu jednostek dla towaru
+    char bufor[NBUF][NELE];         //bufor miesci 20 bajtow, bufor ma 5 elementow
+    int wstaw = 0;                  // pozycja wstawiania i wyjmowania z bufora
+    int wyjmij = 0;
+    }Towar;
+
+    semaphore PROD = NBUF;          //semafor do wstrzymywania producenta
+    semaphore KONS = 0;             //semafor do wstrzymywania konsumenta
+    semaphore A = 1;                //tworze dwa semafory binarne o wartosci 1
+    semaphore B = 1;
+    
+    
+    //proces producent
+    
+    Towar towarProd;
+    
+    while(1){
+    //produkcja towaru
+    
+    P(PROD);                        //opusc sem. producenta
+    P(A);                           //opusc sem. A
+    
+    bufor[wstaw] = towarProd;       //umiesc towar w buforze
+    wstaw = (wstaw + 1) %NBUF;      //przesuniecie w prawo, cyklicznosc
+    
+    V(A);                           //podnies sem. A
+    V(KONS);                        //podnies sem. konsumenta
+    }
+    
+    //Proces konsument
+    
+    Towar towatKons;
+    
+    while(1){
+    //konsumpcja towaru
+        
+    P(KONS);                        //opusc sem. konsumenta
+    P(B);                           //opusc sem. B
+    
+    towarKons = bufor[wyjmij];      //wczytaj towar z bufora
+    wyjmij = (wyjmij + 1) % NBUF;   //przesuniecie w prawo, cyklicznosc
+    
+    V(B);                           //podnies sem. B
+    V(PROD);                        //podnies sem. producenta
+    }
